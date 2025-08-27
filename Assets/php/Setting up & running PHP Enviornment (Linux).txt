@@ -1,0 +1,60 @@
+// PHP Installations
+1. command: sudo su
+2. command: apt install php
+3. command: apt install php-cli php-common php-mysql php-zip php-gd php-mbstring php-curl php-xml php-bcmath php-xdebug
+4. command: nano /etc/php/8.1/cli/conf.d/20-xdebug.ini // command: php --ini (to get actual path of the file)
+5. Add following lines, Press 'Ctrl+x' & 'y'
+zend_extension=xdebug.so
+xdebug.mode=debug
+xdebug.start_with_request=yes
+xdebug.discover_client_host=1
+xdebug.log_level=0
+6. command: apt install composer [optional]
+7. command: php -S localhost:8081 -t /home/<user>/<projectName>; (create the project before if it do not exists)
+8. By now, php (without mysql) up & running with xdebug. (use 'visual studio code' as IDE)
+Consecutive command activates specification up http://localhost:8081 (for validate)
+
+// PHP Server [optional]
+1. Open directory usr->bin as root.
+2. Paste '<username>_background_services' directory from '_linux_background_services' project.
+3. Open directory etc->systemd->system as root.
+4. Paste all files of 'system' directory from '_linux_background_services' project.
+5. command: systemctl status php_serve__<projectName>.service
+// it would have been loaded with 'inactive' status
+6. command: systemctl enable php_serve__<projectName>.service
+7. command: systemctl start php_serve__<projectName>.service
+8. By now, automated php-server for above project(s) would have been activated.
+
+// MySQL Installations
+1. command: apt install mysql-server
+2. command: systemctl status mysql.service
+3. command: systemctl enable mysql.service
+4. command: systemctl start mysql.service
+5. command: mysql -u root
+6. command: CREATE USER '<username>'@'localhost' IDENTIFIED BY '<userpassword>';
+7. command: GRANT ALL PRIVILEGES ON *.* TO '<username>'@'localhost' WITH GRANT OPTION;
+8. command: SET GLOBAL default_storage_engine = 'InnoDB';
+9. command: exit;
+10. command: mysql -u <username> -p // type & enter: <userpassword>
+11. command: show databases;
+// Shows existing databases.
+12. Open 'Antares' application. [optional]
+// Use same credentials to login.
+13. CREATE DATABASE <projectName>; for project '<projectName>'.
+14. By now, MySQL with a for project '<projectName>' would have been up & running.
+
+// Validate Setup
+1. Restart system.
+2. Browse to: http://localhost:8081 // Validates the project '<projectName>' up & running. (repeat step 7. if 'PHP Server' has not been setup)
+3. Open 'Visual Studio Code' -> open '<projectName>' folder -> Put breakpoint at any line in 'index.php' file
+4. Press F5 -> refresh 'http://localhost:8081'
+// Breakpoint would have been hit.
+
+===
+
+// [optional] Make project 'Composer' based
+1. Create a folder '_testProjectComposer'.
+2. Open the folder in terminal.
+3. command: composer init
+4. Follow the instructions provided by composer.
+5. Reference: https://www.digitalocean.com/community/tutorials/how-to-install-php-8-1-and-set-up-a-local-development-environment-on-ubuntu-22-04

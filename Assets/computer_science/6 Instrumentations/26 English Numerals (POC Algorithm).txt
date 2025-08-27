@@ -1,0 +1,43 @@
+A = 3 => "Aaj O aschhi, Kaal o aschhi"
+B = 2 => "Actually Bangladesh gave the Name: Chinese Mouser"
+C = 3 => <spideR ! Tattri>
+D = 3 => [0 power Bulb]
+E = 3 => <MiStY, Bhaalo Laage na ! "why?">
+F = 5 => {it has something to do with}
+G = 3 => <V shape carbon fibre, muscles.>
+H = 4 => (Out of Proportion)
+I = 3 => /quantum physics/
+J = 5 => "Jal"
+K = 5 => "Apple - is not a fruit, it's a time-pass."
+L = 7 => <ROBOT sound>
+M = 5 => /Fried Rice "my suggestion"/
+N = 5 => {raskadam}
+O = 5 => [Jal Tarange JhiliMili JhiliMili]
+P = 5 => <diode? i actually, i don't hate>
+Q = 4 => (Quiz is not IT)
+R = 4 => (wink! i can?)
+S = 5 => <1st January, came & gone.>
+T = 3 => "kI jhaamelaA"
+U = 5 => "bhaloBASHAA"
+V = 2 => {superstitions}
+W = 7 => <Golden Egg>
+X = 1 => /philips/
+Y = 6 => /LED is young/
+Z = 6 => [biscuit flying]
+
+"" = 3 + 2 + 5 + 5 + 3 + 5		= 23 => 23/6 = 3.83333
+<> = 3 + 3 + 3 + 7 + 5 + 5 + 7	= 33 => 33/7 = 4.71428
+[] = 3 + 5 + 6					= 14 => 14/3 = 4.66666
+{} = 5 + 5 + 2					= 12 => 12/3 = 4.00000
+() = 4 + 4 + 4					= 12 => 12/3 = 4.00000
+// = 3 + 5 + 1 + 6				= 15 => 15/4 = 3.75000
+
+3 x 7 = 21
+2 x 2 = 4
+5 x 9 = 45
+4 x 3 = 12
+7 x 2 = 14
+1 x 1 = 1
+6 x 2 = 12
+----------
+      = 109

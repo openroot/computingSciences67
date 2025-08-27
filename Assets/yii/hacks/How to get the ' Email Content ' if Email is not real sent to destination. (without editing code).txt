@@ -1,0 +1,13 @@
+[ How to get the ' Email Content ' if Email is not real sent to destination. (without editing code) ]
+********************
+********************
+
+1. Navigate to: /vendor/yiisoft/yii2/mail/BaseMailer.php
+
+2. At line 188: find following code
+$html = $this->render($view['html'], $params, $this->htmlLayout);
+
+3. Put breakpoint: to fetch ' Email Content ' at debug
+
+********************
+********************

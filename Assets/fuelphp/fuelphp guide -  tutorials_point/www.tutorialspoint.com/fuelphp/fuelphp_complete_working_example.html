@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<!-- Mirrored from www.tutorialspoint.com/fuelphp/fuelphp_complete_working_example.htm by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 10 Jun 2023 17:44:04 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+<title>FuelPHP - Complete Working Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=yes">
+<meta name="Keywords" content="Example, Working, Complete, FuelPHP,  HTML, Python, CSS, SQL, JavaScript, Perl, PHP, Java, C, C++, C#, jQuery, Bootstrap, Colors, XML, MySQL, Icons, NodeJS, React, Graphics, Angular, R, AI, Git, Machine Learning, Data Science, Tutorials, Programming, Data Structure, Algorithms, Web Development, Training, Learning, Quiz, Exercises, Courses, References, Computer Science, Management, Finance, Examples, Articles, Demos, Tips, Website">
+<meta name="Description" content="FuelPHP Complete Working Example - In this chapter, we will learn how to create a complete MVC based BookStore application in FuelPHP.">
+<link rel="canonical" href="fuelphp_complete_working_example.html" />
+<link rel="icon" href="https://www.tutorialspoint.com/favicon.ico" type="image/x-icon" >
+<meta property="og:image" content="https://www.tutorialspoint.com/images/tp_big_logo.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="400">
+<meta property="og:image:height" content="234">
+<meta property="og:title" content="FuelPHP - Complete Working Example">
+<meta property="og:description" content="FuelPHP Complete Working Example - In this chapter, we will learn how to create a complete MVC based BookStore application in FuelPHP.">
+<link id="style-switch" rel="stylesheet" href="https://www.tutorialspoint.com/static/css/purge/style-min.css?v=6.03">
+<link rel="stylesheet" href="https://www.tutorialspoint.com/static/css/custom.css?v=8.19.3">
+<style>ul.toc li.heading, .back-top, a.demo, .home-intro-sub{background:#232323; color:#fff;}  ul.toc li.heading:hover{background:#232323;} .btn-grey-border{background:#232323; color:#fff; border:1px solid #232323;} .course-box{background:#232323;} .qa-content{padding:0px 0px 0px 0px!important;} a.demo{background:#232323!important;} @media (max-width: 1199.98px){.navbar-expand-xl .navbar-brand .navbar-brand-item{height:38px!important; width:auto;}}
+</style>
+<script id="adv" data-cfasync="false">(function(w, d) { var s = d.createElement('script'); s.src = 'http://cdn.adpushup.com/40046/adpushup.js'; s.type = 'text/javascript'; s.async = true; (d.getElementsByTagName('head')[0] || d.getElementsByTagName('body')[0]).appendChild(s); })(window, document);</script>
+<script>(function(w,d){var adSlot=d.createElement("div");adSlot.className="ad-slot ad gpt-div-slot",adSlot.style="position: absolute; visibility: hidden;",adSlot.textContent="&nbsp;",d.body.appendChild(adSlot),setTimeout((function(){if(0===adSlot.clientHeight){var t=d.createElement("script");t.setAttribute("src","https://delivery.adrecover.com/18107/adRecover.js"),t.setAttribute("type","text/javascript"),t.setAttribute("async",!0),d.head.append(t)}}),0);})(window, document);</script>
+</style>
+</head>
+<body>
+<div class="navbar-top navbar-dark d-xl-block py-2 mx-2 mx-md-4 rounded-bottom-4">
+	<div class="container-fluid px-3 px-xl-0">
+		<div class="d-lg-flex justify-content-lg-between align-items-center top-nav-links">
+			<ul class="nav align-items-center justify-content-center">
+				<li class="nav-item" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" data-bs-original-title="Home Page">
+					<a class="nav-link" href="https://www.tutorialspoint.com/index.htm"><i class="fal fa-home-alt me-1"></i> Home</a>
+				</li>
+				<li class="nav-item" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" data-bs-original-title="Online Coding System">
+					<a class="nav-link" href="https://www.tutorialspoint.com/codingground.htm"><i class="fal fa-code me-1"></i> Coding Ground</a>
+				</li>
+				<li class="nav-item" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" data-bs-original-title="Job Openings">
+					<span><a class="nav-link" href="https://www.tutorialspoint.com/about/about_careers.htm"><i class="fal fa-suitcase me-1"></i> Jobs</a></span>
+				</li>
+				<li class="nav-item" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" data-bs-original-title="Digital Whiteboard">
+					<span><a class="nav-link" href="https://www.tutorialspoint.com/whiteboard.htm"><i class="fal fa-chalkboard me-1"></i> Whiteboard</a></span>
+				</li>
+				<li class="nav-item" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" data-bs-original-title="Developer's Tools">
+					<span><a class="nav-link" href="https://www.tutorialspoint.com/online_dev_tools.htm"><i class="fal fa-tools me-1"></i> Tools</a></span>
+				</li>
+				<li class="nav-item" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" data-bs-original-title="Corporate Trainings">
+					<span><a class="nav-link" href="https://www.tutorialspoint.com/business/index.asp"><i class="fal fa-chalkboard-user me-1"></i> Corporate Training</a></span>
+				</li>
+			</ul>
+			<!-- Navbar top Right-->
+			<div class="d-flex align-items-center justify-content-center">
+				<div class="navbar-nav ms-2">
+				  <div class="modeswitch-wrap" id="darkModeSwitch">
+					 <div class="modeswitch-item">
+						<div class="modeswitch-icon">
+							<i class="fal fa-sun toggle-sun"></i>
+							<i class="fal fa-moon toggle-moon"></i>
+						</div>
+					 </div>
+				  </div>
+				</div>
+				<div class="me-3c top-nav-social">
+				  <a class="nav-link" href="https://www.tutorialspoint.com/market/teach_with_us.jsp" target="_self"  data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" data-bs-original-title="Teach with us"><i class="fal fa-users-class me-2"></i> <span>Teach with us</span></a>
+				</div>
+				<ul class="list-unstyled d-flex mb-0 top-nav-social">
+					<li><a class="px-2 nav-link" rel="nofollow" aria-label="Facebook" href="https://www.facebook.com/tutorialspointindia" target="_blank"   data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" data-bs-original-title="Tutorialspoint Facebook"><i class="fab fa-facebook"></i></a> </li>
+					<li><a class="px-2 nav-link" rel="nofollow" aria-label="Instagram" href="https://www.instagram.com/tutorialspoint_/" target="_blank" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" data-bs-original-title="Tutorialspoint Instagram"><i class="fab fa-instagram"></i></a> </li>
+					<li><a class="px-2 nav-link" rel="nofollow" aria-label="Twitter" href="https://twitter.com/tutorialspoint" target="_blank" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" data-bs-original-title="Tutorialspoint Twitter"><i class="fab fa-twitter"></i></a> </li>
+					<li><a class="px-2 nav-link" rel="nofollow" aria-label="YouTube" href="https://www.youtube.com/channel/UCVLbzhxVTiTLiVKeGV7WEBg" target="_blank" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" data-bs-original-title="Tutorialspoint Youtube"><i class="fab fa-youtube"></i></a> </li>
+					<li><a class="px-2 nav-link" rel="nofollow" aria-label="LinkedIn" href="https://www.linkedin.com/authwall?trk=bf&amp;trkInfo=AQEkqX2eckF__gAAAX-wMwEYvrsjBVbEtWQd4pgEdVSzkL22Nik1KEpY_ECWLKDGc41z8IOZWr2Bb0fvJplT60NPBtSw87J6QCpc7wD4qQ3iU13n6xJtBxME5o05Wmpg5JPm5YY=&amp;originalReferer=&amp;sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Ftutorialspoint" target="_blank"  data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" data-bs-original-title="Tutorialspoint LinkedIn"><i class="fab fa-linkedin-in"></i></a> </li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<header class="navbar-light navbar-sticky header-static">
+	<nav class="navbar navbar-expand-xl">
+		<div class="container-fluid px-3 px-xl-4">
+			<a class="navbar-brand" href="https://www.tutorialspoint.com/index.htm"><img class="light-mode-item navbar-brand-item" src="https://www.tutorialspoint.com/static/images/logo.png?v2" alt="logo"> <img class="dark-mode-item navbar-brand-item" src="https://www.tutorialspoint.com/static/images/logo-w.png?v2" alt="logo"></a>
+			<button class="navbar-toggler-toc collapsed ms-auto-toc" type="button"  id="btn-tutorial-toc">
+				<span><i class="fal fa-bars"></i></span>
+			</button>
+			<button class="navbar-toggler ms-auto" type="button" id="btn-menu-collapse">
+				<i class="fal fa-user-circle fs-user-size"></i>
+			</button>
+			<div class="navbar-collapse w-100 collapse" id="navbarCollapse">
+				<ul class="navbar-nav navbar-nav-scroll me-auto">
+					<li class="nav-item nav-xs-login">
+						<a class="nav-link"><i class="fal fa-sign-in me-2"></i>Login</a>
+					</li>
+					<li class="nav-item dropdown dropdown-menu-shadow-stacked">
+						<a href="javascript:void(0);" class="nav-link" id="categoryMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<i class="fal fa-th-large fs-5 me-xl-1 d-xl-none"></i>
+							<i class="fal fa-th me-1 d-none d-xl-inline-block"></i>
+							<span class="d-xl-inline-block">Category <i class="fal fa-angle-down"></i></span>
+						</a>
+												<ul class="dropdown-menu categories-menu shadow" id="categories-menu">
+							<li><a href="https://www.tutorialspoint.com/academic_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Academic Tutorials</a></li>
+							<li><a href="https://www.tutorialspoint.com/big_data_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Big Data &amp; Analytics </a></li>
+							<li><a href="https://www.tutorialspoint.com/computer_programming_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Computer Programming </a></li>
+							<li><a href="https://www.tutorialspoint.com/computer_science_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Computer Science </a></li>
+							<li><a href="https://www.tutorialspoint.com/database_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Databases </a></li>
+							<li><a href="https://www.tutorialspoint.com/devops_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> DevOps </a></li>
+							<li><a href="https://www.tutorialspoint.com/digital_marketing_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Digital Marketing </a></li>
+							<li><a href="https://www.tutorialspoint.com/engineering_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Engineering Tutorials </a></li>
+							<li><a href="https://www.tutorialspoint.com/upsc_ias_exams.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Exams Syllabus </a></li>
+							<li><a href="https://www.tutorialspoint.com/famous_monuments.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Famous Monuments </a></li>
+							<li><a href="https://www.tutorialspoint.com/gate_exams_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> GATE Exams </a></li>
+							<li><a href="https://www.tutorialspoint.com/latest_technologies.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Latest Technologies </a></li>
+							<li><a href="https://www.tutorialspoint.com/machine_learning_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Machine Learning </a></li>
+							<li><a href="https://www.tutorialspoint.com/mainframe_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Mainframe Development </a></li>
+							<li><a href="https://www.tutorialspoint.com/management_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Management Tutorials </a></li>
+							<li><a href="https://www.tutorialspoint.com/maths_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Mathematics Tutorials</a></li>
+							<li><a href="https://www.tutorialspoint.com/microsoft_technologies_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Microsoft Technologies </a></li>
+							<li><a href="https://www.tutorialspoint.com/misc_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Misc tutorials </a></li>
+							<li><a href="https://www.tutorialspoint.com/mobile_development_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Mobile Development </a></li>
+							<li><a href="https://www.tutorialspoint.com/java_technology_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Java Technologies </a></li>
+							<li><a href="https://www.tutorialspoint.com/python_technologies_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Python Technologies </a></li>
+							<li><a href="https://www.tutorialspoint.com/sap_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> SAP Tutorials </a></li>
+							<li><a href="https://www.tutorialspoint.com/scripting_lnaguage_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Programming Scripts </a></li>
+							<li><a href="https://www.tutorialspoint.com/selected_reading.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Selected Reading </a></li>
+							<li><a href="https://www.tutorialspoint.com/software_quality_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Software Quality </a></li>
+							<li><a href="https://www.tutorialspoint.com/soft_skill_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Soft Skills </a></li>
+							<li><a href="https://www.tutorialspoint.com/telecom_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Telecom Tutorials </a></li>
+							<li><a href="https://www.tutorialspoint.com/upsc_ias_exams.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> UPSC IAS Exams </a></li>
+							<li><a href="https://www.tutorialspoint.com/web_development_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Web Development </a></li>
+							<li><a href="https://www.tutorialspoint.com/sports_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Sports Tutorials </a></li>
+							<li><a href="https://www.tutorialspoint.com/xml_technologies_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> XML Technologies </a></li>
+							<li><a href="https://www.tutorialspoint.com/multi_language_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Multi-Language</a></li>
+							<li><a href="https://www.tutorialspoint.com/questions_and_answers.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Interview Questions</a></li>
+						</ul>
+											</li>
+				</ul>
+				<div class="navbar-collapse">
+					<div class="col-xl-9">
+						<div class="nav my-3 my-xl-0 px-4 flex-nowrap align-items-center">
+							<div class="nav-item w-100">
+								<form class="rounded position-relative">
+									<input class="form-control pe-4 bg-secondary bg-opacity-10 border-0 search-strings" type="search" placeholder="Search tutorials ..." id="search-strings" name="key" data-result="search-results" aria-label="Search">
+									<button type="button" id="btnSearch" class="btn bg-transparent px-2 py-0 position-absolute top-50 end-0 translate-middle-y"><i class="fal fa-search fs-6"></i></button>
+									<div class="search-box search-box-inn" id="search-results"></div>
+									<div class="clear"></div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<ul class="navbar-nav navbar-nav-scroll">
+					<li class="nav-item">
+						<a class="nav-link" href="https://www.tutorialspoint.com/latest/prime-packs" target="_self"><i class="fal fa-cubes me-1"></i>Prime Packs</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="https://www.tutorialspoint.com/market/index.asp" target="_self"><i class="fal fa-play-circle me-1"></i>Courses</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="https://www.tutorialspoint.com/latest/ebooks" target="_self"><i class="fal fa-book-reader me-1"></i>eBooks</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="https://www.tutorialspoint.com/tutorialslibrary.htm" target="_self"><i class="fal fa-books me-1"></i>Library</a>
+					</li>
+					<li class="nav-item">
+					        <a class="nav-link" href="https://www.tutorialspoint.com/articles/index.php" target="_self"><i class="fal fa-money-check-edit me-1"></i> Articles</a>
+					</li>
+				</ul>
+			</div>
+			<div class="navbar-nav d-lg-inline-block nav-login">
+			   <a href="https://www.tutorialspoint.com/market/login.asp" class="btn btn-grey-border mb-0"><i class="fal fa-sign-in me-2"></i>Login</a>
+			</div>
+		</div>
+	</nav>
+</header>
+<main class="bg-light pb-4">
+<div class="container-fluid mt-3 px-3 px-xl-3">
+<div class="row g-4">
+<div class="col-sm-12 col-md-4 col-xl-3 ps-0 pe-0 collapse tutorial-toc" id="tocCollapse">
+<div class="card card-body bg-light pt-0 toc-nav">
+<div class="mini-logo">
+<img src="images/fuelphp-mini-logo.jpg" alt="FuelPHP Tutorial" /> 
+</div>
+<ul class="toc chapters" >
+<li class="heading">FuelPHP Tutorial</li>
+<li><a href="index-2.html">FuelPHP - Home</a></li>
+<li><a href="fuelphp_introduction.html">FuelPHP - Introduction
+<li><a href="fuelphp_installation.html">FuelPHP - Installation</a></li>
+<li><a href="fuelphp_architecture_overview.html">FuelPHP - Architecture Overview</a></li>
+<li><a href="fuelphp_simple_web_application.html">FuelPHP - Simple Web Application</a></li>
+<li><a href="fuelphp_configuration.html">FuelPHP - Configuration</a></li>
+<li><a href="fuelphp_controllers.html">FuelPHP - Controllers</a></li>
+<li><a href="fuelphp_routing.html">FuelPHP - Routing</a></li>
+<li><a href="fuelphp_requests_and_response.html">FuelPHP - Requests &amp; Response</a></li>
+<li><a href="fuelphp_views.html">FuelPHP - Views</a></li>
+<li><a href="fuelphp_presenters.html">FuelPHP - Presenters</a></li>
+<li><a href="fuelphp_models_and_database.html">FuelPHP - Models &amp; Database</a></li>
+<li><a href="fuelphp_form_programming.html">FuelPHP - Form Programming</a></li>
+<li><a href="fuelphp_validation.html">FuelPHP - Validation</a></li>
+<li><a href="fuelphp_advanced_form_programming.html">Advanced Form Programming</a></li>
+<li><a href="fuelphp_file_uploading.html">FuelPHP - File Uploading</a></li>
+<li><a href="fuelphp_ajax.html">FuelPHP - Ajax</a></li>
+<li><a href="fuelphp_hmvc_request.html">FuelPHP - HMVC Request</a></li>
+<li><a href="fuelphp_themes.html">FuelPHP - Themes</a></li>
+<li><a href="fuelphp_modules.html">FuelPHP - Modules</a></li>
+<li><a href="fuelphp_packages.html">FuelPHP - Packages</a></li>
+<li><a href="fuelphp_cookie_and_session_management.html">Cookie &amp; Session Management</a></li>
+<li><a href="fuelphp_events.html">FuelPHP - Events</a></li>
+<li><a href="fuelphp_email_management.html">FuelPHP - Email Management</a></li>
+<li><a href="fuelphp_profiler.html">FuelPHP - Profiler</a></li>
+<li><a href="fuelphp_error_handling_and_debugging.html">Error Handling &amp; Debugging</a></li>
+<li><a href="fuelphp_unit_testing.html">FuelPHP - Unit Testing</a></li>
+<li><a href="fuelphp_complete_working_example.html">Complete Working Example</a></li>
+<li class="heading">FuelPHP Useful Resources</li>
+<li><a href="fuelphp_quick_guide.html">FuelPHP - Quick Guide</a></li>
+<li><a href="fuelphp_useful_resources.html">FuelPHP - Useful Resources</a></li>
+<li><a href="fuelphp_discussion.html">FuelPHP - Discussion</a></li>
+</ul>
+<ul class="toc reading">
+<li class="sreading">Selected Reading</li>
+<li><a target="_top" href="https://www.tutorialspoint.com/upsc_ias_exams.htm">UPSC IAS Exams Notes</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/developers_best_practices/index.htm">Developer's Best Practices</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/questions_and_answers.htm">Questions and Answers</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/effective_resume_writing.htm">Effective Resume Writing</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/hr_interview_questions/index.htm">HR Interview Questions</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/computer_glossary.htm">Computer Glossary</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/computer_whoiswho.htm">Who is Who</a></li>
+</ul>
+<div id="stickyparent" class="d-none d-sm-block">
+<div style="height:250px;width:300px;" id="sticky-ad">
+<div id="430c9911-782f-495d-88f9-69f58ca8c9a4" class="_ap_apex_ad" >
+<script>
+var adpushup = adpushup || {};
+adpushup.que = adpushup.que || [];
+adpushup.que.push(function() {
+adpushup.triggerAd("430c9911-782f-495d-88f9-69f58ca8c9a4");
+});
+</script>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Tutorial ToC Ends Here -->
+
+<!-- Tutorial Content Starts Here -->
+<div class="col-sm-12 col-md-8 col-xl-6 rounded-3 tutorial-content" id="mainContent">
+<h1>FuelPHP - Complete Working Example</h1>
+<hr/>
+<div id="adp_top_ads" style="text-align:center !important;overflow: hidden; max-height:99px;min-height:99px"></div>
+<script>
+     var adPos = document.getElementById('adp_top_ads');
+     var ad_id_720 = "8014640d-fd34-4b2e-9b1b-cc67234a2325";
+     var ad_id_650 = "2d1bb2c4-eb72-471d-9c80-1bf5514728c1";
+     var ad_id_300 = "df94a1a9-ae2f-432d-9a92-d93823ff4503";
+     var width = window.innerWidth;
+     var ad_id = ad_id_720;
+     if( width <= 768 ){
+        ad_id =  ad_id_300;
+        adPos.style.minHeight = "260px";
+        adPos.style.maxHeight = "260px";
+     }else if( width <= 1435 ){
+        ad_id =  ad_id_650;
+     }
+     adPos.innerHTML = '<div id="' + ad_id + '" class="_ap_apex_ad"></div>';
+     var adpushup = adpushup || {};
+     adpushup.que = adpushup.que || [];
+     adpushup.que.push(function() {
+     adpushup.triggerAd(ad_id);
+     });
+</script>
+<div class="mui-container-fluid button-borders">
+<div class="pre-btn">
+<a href="index-2.html"><i class="fal fa-chevron-circle-left"></i> Previous Page</a>
+</div>
+<div class="nxt-btn">
+<a href="fuelphp_installation.html">Next Page <i class="fal fa-chevron-circle-right"></i>&nbsp;</a>
+</div>
+</div>
+<div class="clear"></div>
+<p>In this chapter, we will learn how to create a complete MVC based BookStore application in FuelPHP.</p>
+<h2>Step 1: Create a project</h2>
+<p>Create a new project named “BookStore” in FuelPHP using the following command.</p>
+<pre class="result notranslate">
+oil create bookstore
+</pre>
+<h2>Step 2: Create a layout</h2>
+<p>Create a new layout for our application. Create a file, layout.php at location fuel/app/views/layout.php. The code is as follows,</p>
+<h3>fuel/app/views/layout.php</h3>
+<pre class="prettyprint notranslate">
+&lt;!DOCTYPE html&gt; 
+&lt;html lang = "en"&gt; 
+   &lt;head&gt; 
+      &lt;meta charset = "utf-8"&gt; 
+      &lt;meta http-equiv = "X-UA-Compatible" content = "IE = edge"&gt; 
+      &lt;meta name = "viewport" content = "width = device-width, initial-scale = 1"&gt;  
+      &lt;title&gt;&lt;?php echo $title; ?&gt;&lt;/title&gt;  
+      
+      &lt;!-- Bootstrap core CSS --&gt; 
+      &lt;link href = "/assets/css/bootstrap.min.css" rel = "stylesheet"&gt;  
+      &lt;script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"&gt;
+      &lt;/script&gt; 
+      &lt;script src = "/assets/js/bootstrap.min.js"&gt;&lt;/script&gt; 
+   &lt;/head&gt;  
+   
+   &lt;body&gt; 
+      &lt;nav class = "navbar navbar-inverse navbar-fixed-top"&gt; 
+         &lt;div class = "container"&gt; 
+            &lt;div class = "navbar-header"&gt;
+               
+               &lt;button type = "button" class = "navbar-toggle collapsed" 
+                  datatoggle = "collapse" data-target = "#navbar" 
+                  aria-expanded = "false" ariacontrols = "navbar"&gt; 
+                  &lt;span class=  "sr-only"&gt;Toggle navigation&lt;/span&gt; 
+                  &lt;span class = "icon-bar"&gt;&lt;/span&gt; 
+                  &lt;span class = "icon-bar"&gt;&lt;/span&gt; 
+                  &lt;span class = "icon-bar"&gt;&lt;/span&gt; 
+               &lt;/button&gt; 
+               &lt;a class = "navbar-brand" href = "#"&gt;FuelPHP Sample&lt;/a&gt; 
+            &lt;/div&gt; 
+            
+            &lt;div id = "navbar" class = "collapse navbar-collapse"&gt; 
+               &lt;ul class = "nav navbar-nav"&gt; 
+                  &lt;li class = "active"&gt;&lt;a href = "/book/index"&gt;Home&lt;/a&gt;&lt;/li&gt; 
+                  &lt;li&gt;&lt;a href = "/book/add"&gt;Add book&lt;/a&gt;&lt;/li&gt; 
+               &lt;/ul&gt; 
+            &lt;/div&gt;&lt;!--/.nav-collapse --&gt; 
+         &lt;/div&gt; 
+      &lt;/nav&gt;  
+      
+      &lt;div class = "container"&gt; 
+         &lt;div class = "starter-template" style = "padding: 50px 0 0 0;"&gt; 
+            &lt;?php echo $content; ?&gt; 
+         &lt;/div&gt; 
+      
+      &lt;/div&gt;&lt;!-- /.container --&gt; 
+   &lt;/body&gt;
+   
+&lt;/html&gt;
+</pre>
+<p>Here, we are using bootstrap template. FuelPHP has first class support for bootstrap templates. We have created two variables, title and content. title is used to specify the current page's title and content is used to specify the current page details.</p>
+<h2>step 3: Create a Controller</h2>
+<p>Create a new controller, Controller_Book to show, add, edit, and delete the book. Create a new file, fuel/app/classes/controller/book.php and place the following code.</p>
+<h3>fuel/app/classes/controller/book.php</h3>
+<pre class="prettyprint notranslate">
+&lt;?php  
+   class Controller_Book extends Controller_Template {
+      public $template = 'layout'; 
+      public function action_index() { 
+         
+         // Create the view object 
+         $view = View::forge('book/index');  
+         
+         // set the template variables 
+         $this-&gt;template-&gt;title = "Book index page"; 
+         $this-&gt;template-&gt;content = $view; 
+      } 
+   } 
+</pre>
+<p>Here, we have created the book controller by inheriting template controller and set the default template as fuel/app/views/layout.php.</p>
+<h2>step 4: Create the index view</h2>
+<p>Create a folder, book in views directory under fuel/app/views folder. Then, create a file index.php inside the book folder and add the following code,</p>
+<h3>fuel/app/views/index.php</h3>
+<pre class="prettyprint notranslate">
+&lt;h3&gt;index page&lt;/h3&gt;
+</pre>
+<p>As of now, we have created a basic book controller.</p>
+<h2>step 5: Modify the default route</h2>
+<p>Update the default route to set the home page of the application to book controller. Open the default routing configuration file, fuel/app/config/routes.php and change it as follows.</p>
+<h3>fuel/app/config/routes.php</h3>
+<pre class="prettyprint notranslate">
+&lt;?php 
+   return array ( 
+      '_root_'  =&gt; 'book/index',  // The default route 
+      '_404_'   =&gt; 'welcome/404', // The main 404 route 
+
+      'hello(/:name)?' =&gt; array('welcome/hello', 'name' =&gt; 'hello'), 
+   ); 
+</pre>
+<p>Now, requesting the URL, http://localhost:8080/ will return the index page of the book controller as follows,</p>
+<img src="images/return_index_page.jpg" alt="Return Index Page" />
+<h2>step 6: Create database</h2>
+<p>Create a new database in MySQL server, using the following command,</p>
+<pre class="result notranslate">
+create database tutorialspoint_bookdb 
+</pre>
+<p>Then, create a table inside the database using the following command,</p>
+<pre class="prettyprint notranslate">
+CREATE TABLE book ( 
+   id INT PRIMARY KEY AUTO_INCREMENT, 
+   title VARCHAR(80) NOT NULL, 
+   author VARCHAR(80) NOT NULL, 
+   price DECIMAL(10, 2) NOT NULL 
+);
+</pre>
+<p>Insert some sample record into the table using the following SQL statement.</p>
+<pre class="prettyprint notranslate">
+INSERT 
+INTO 
+   book(title, 
+   author, 
+   price) 
+VALUES( 
+   'The C Programming Language', 
+   'Dennie Ritchie', 
+   25.00 
+),( 
+   'The C++ Programming Language', 
+   'Bjarne Stroustrup', 
+   80.00
+),( 
+   'C Primer Plus (5th Edition)', 
+   'Stephen Prata', 
+   45.00 
+),('Modern PHP', 'Josh Lockhart', 10.00),( 
+   'Learning PHP, MySQL & JavaScript, 4th Edition', 
+   'Robin Nixon', 
+   30.00 
+)
+</pre>
+<h2>step 7: Configure database</h2>
+<p>Configure the database using database configuration file, db.php located at fuel/app/config.</p>
+<h3>fuel/app/config/db.php</h3>
+<pre class="prettyprint notranslate">
+&lt;?php  
+   return array ( 
+      'development' =&gt; array ( 
+         'type'           =&gt; 'mysqli', 
+         'connection'     =&gt; array ( 
+            'hostname'       =&gt; 'localhost', 
+            'port'           =&gt; '3306', 
+            'database'       =&gt; 'tutorialspoint_bookdb', 
+            'username'       =&gt; 'root', 
+            'password'       =&gt; 'password', 
+            'persistent'     =&gt; false, 
+            'compress'       =&gt; false, 
+         ), 
+         'identifier'     =&gt; '`', 
+         'table_prefix'   =&gt; '', 
+         'charset'        =&gt; 'utf8', 
+         'enable_cache'   =&gt; true, 
+         'profiling'      =&gt; false, 
+         'readonly'       =&gt; false, 
+      ),
+      'production' =&gt; array ( 
+         'type'           =&gt; 'mysqli', 
+         'connection'     =&gt; array ( 
+            'hostname'       =&gt; 'localhost', 
+            'port'           =&gt; '3306', 
+            'database'       =&gt; 'tutorialspoint_bookdb', 
+            'username'       =&gt; 'root', 
+            'password'       =&gt; 'password', 
+            'persistent'     =&gt; false, 
+            'compress'       =&gt; false, 
+         ), 
+         'identifier'     =&gt; '`', 
+         'table_prefix'   =&gt; '', 
+         'charset'        =&gt; 'utf8', 
+         'enable_cache'   =&gt; true, 
+         'profiling'      =&gt; false, 
+         'readonly'       =&gt; false, 
+      ), 
+   );
+</pre>
+<h2>step 8: Include Orm package</h2>
+<p>Update the main configuration file to include ORM package. It is located at “fuel/app/config/”.</p>
+<h3>fuel/app/config/config.php</h3>
+<pre class="prettyprint notranslate">
+'always_load' =&gt; array ( 
+   'packages' =&gt; array ( 
+      'orm' 
+   ), 
+), 
+</pre>
+<h2>step 9: Create a model</h2>
+<p>Create a book model in book.php located at “fuel/app/classes/model”. It is defined as follows &minus;</p>
+<h3>fuel/app/classes/model/book.php</h3>
+<pre class="prettyprint notranslate">
+&lt;?php  
+   class Model_Book extends Orm\Model { 
+      protected static $_connection = 'production'; 
+      protected static $_table_name = 'book'; 
+      protected static $_primary_key = array('id'); 
+      
+      protected static $_properties = array ( 
+         'id',  
+         'title' =&gt; array ( 
+            'data_type' =&gt; 'varchar', 
+            'label' =&gt; 'Book title', 
+            'validation' =&gt; array ( 
+               'required',  
+               'min_length' =&gt; array(3),  
+               'max_length' =&gt; array(80) 
+            ), 
+            
+            'form' =&gt; array ( 
+               'type' =&gt; 'text' 
+            ), 
+         ),  
+         'author' =&gt; array ( 
+            'data_type' =&gt; 'varchar', 
+            'label' =&gt; 'Book author', 
+            'validation' =&gt; array ( 
+               'required', 
+            ), 
+            'form' =&gt; array ( 
+               'type' =&gt; 'text' 
+            ), 
+         ),  
+         'price' =&gt; array ( 
+            'data_type' =&gt; 'decimal', 
+            'label' =&gt; 'Book price', 
+            'validation' =&gt; array ( 
+               'required', 
+            ), 
+            'form' =&gt; array ( 
+               'type' =&gt; 'text' 
+            ), 
+         ),  
+      );  
+      protected static $_observers = array('Orm\\Observer_Validation' =&gt; array ( 
+         'events' =&gt; array('before_save') 
+      )); 
+   }
+</pre>
+<p>Here, we have specified the database details as properties of the model. It has validation details as well.</p>
+<h2>step 10: Display books</h2>
+<p>Update the index action in book controller to list the available books in the database.</p>
+<h3>fuel/app/classes/controller/book.php</h3>
+<pre class="prettyprint notranslate">
+&lt;?php  
+   class Controller_Book extends Controller_Template { 
+      public $template = 'layout'; 
+      public function action_index() { 
+         
+         // Create the view object 
+         $view = View::forge('book/index');  
+         
+         // fetch the book from database and set it to the view 
+         $books = Model_Book::find('all'); 
+         $view-&gt;set('books', $books);  
+         
+         // set the template variables
+         $this-&gt;template-&gt;title = "Book index page"; 
+         $this-&gt;template-&gt;content = $view; 
+      } 
+   }
+</pre>
+<p>Here, we have used the <b>orm</b> to fetch the book details from the database and then passed the book details to views.</p>
+<h2>step 11: Update index view</h2>
+<p>Update the view file index.php located at “fuel/app/views/book”. The complete updated code is as follows,</p>
+<h3>fuel/app/views/book/index.php</h3>
+<pre class="prettyprint notranslate">
+&lt;table class = "table"&gt; 
+   &lt;thead&gt; 
+      &lt;tr&gt; 
+         &lt;th&gt;#&lt;/th&gt; 
+         &lt;th&gt;Title&lt;/th&gt; 
+         &lt;th&gt;Author&lt;/th&gt; 
+         &lt;th&gt;Price&lt;/th&gt; 
+         &lt;th&gt;&lt;/th&gt; 
+      &lt;/tr&gt; 
+   &lt;/thead&gt; 
+   
+   &lt;tbody&gt; 
+      &lt;?php 
+         foreach($books as $book) {  
+      ?&gt; 
+      
+      &lt;tr&gt; 
+         &lt;td&gt;&lt;?php echo $book['id']; ?&gt;&lt;/td&gt; 
+         &lt;td&gt;&lt;?php echo $book['title']; ?&gt;&lt;/td&gt; 
+         &lt;td&gt;&lt;?php echo $book['author']; ?&gt;&lt;/td&gt; 
+         &lt;td&gt;&lt;?php echo $book['price']; ?&gt;&lt;/td&gt; 
+         &lt;td&gt; 
+            &lt;a href = "/book/edit/&lt;?php echo $book['id']; ?&gt;"&gt;Edit&lt;/a&gt; 
+            &lt;a href = "/book/delete/&lt;?php echo $book['id']; ?&gt;"&gt;Delete&lt;/a&gt; 
+         &lt;/td&gt;
+      &lt;/tr&gt; 
+      
+      &lt;?php 
+      } 
+      ?&gt; 
+   &lt;/tbody&gt; 
+&lt;/table&gt; 
+&lt;ul&gt;
+&lt;/ul&gt; 
+</pre>
+<p>Now, requesting the URL, http://localhost:8080/ will show the page as follows &minus;</p>
+<img src="images/index_view.jpg" alt="Index View" />
+<h2>step 12: Create action to add book</h2>
+<p>Create the functionality to add a new book into the bookstore. Create a new action, action_add in the book controller as follows,</p>
+<pre class="prettyprint notranslate">
+public function action_add() { 
+   
+   // create a new fieldset and add book model 
+   $fieldset = Fieldset::forge('book')-&gt;add_model('Model_Book');  
+   
+   // get form from fieldset 
+   $form = $fieldset-&gt;form();  
+   
+   // add submit button to the form 
+   $form-&gt;add('Submit', '', array('type' =&gt; 'submit', 'value' =&gt; 'Submit'));
+   
+   // build the form  and set the current page as action  
+   $formHtml = $fieldset-&gt;build(Uri::create('book/add'));  
+   $view = View::forge('book/add'); 
+   $view-&gt;set('form', $formHtml, false);  
+   
+   if (Input::param() != array()) { 
+      try { 
+         $book = Model_Book::forge(); 
+         $book-&gt;title = Input::param('title'); 
+         $book-&gt;author = Input::param('author'); 
+         $book-&gt;price = Input::param('price'); 
+         $book-&gt;save();  
+         Response::redirect('book'); 
+      } catch (Orm\ValidationFailed $e) { 
+         $view-&gt;set('errors', $e-&gt;getMessage(), false); 
+      } 
+   }  
+   $this-&gt;template-&gt;title = "Book add page";  
+   $this-&gt;template-&gt;content = $view; } 
+</pre>
+<p>Here the following two processes are being performed,</p>
+<ul class="list">
+<li><p>Building the book form to add book using Fieldset methods and Book model.</p></li>
+<li><p>Processing the book form, when the user enters the book information and submitted back the form. It can be found by checking the Input::param() method for any submitted data. Processing the form involves the following steps &minus;</p>
+<ul class="list">
+<li><p>Gather the book information.</p></li>
+<li><p>Validate the book information. We have already set the validation to be called before save method. If the validation fails, it will throw <i>Orm</i>\ValidationFailed exception.</p></li>
+<li><p>Store the book information into the database.</p></li>
+<li><p>Redirect the user to index page on success. Otherwise, show the form again.</p></li>
+</ul>
+</li>
+</ul>
+<p>We are doing both, showing the form as well as processing the form in the same action. When the user calls the action for the first time, it will show the form. When the user enters the book information and submits the data, then it will process the form.</p>
+<h2>step 13: Create the view for add book action</h2>
+<p>Create the view for add book action. Create a new file, fuel/app/views/book/add.php and enter the following code,</p>
+<pre class="prettyprint notranslate">
+&lt;style&gt;  
+   #form table { 
+      width: 90%; 
+   }  
+   #form table tr { 
+      width: 90% 
+   }  
+   #form table tr td { 
+      width: 50% 
+   }  
+   #form input[type = text], select { 
+      width: 100%; 
+      padding: 12px 20px; 
+      margin: 8px 0; 
+      display: inline-block; 
+      border: 1px solid #ccc; 
+      border-radius: 4px; 
+      box-sizing: border-box; 
+   }  
+   #form input[type = submit] { 
+      width: 100%;
+      background-color: #3c3c3c; 
+      color: white; 
+      padding: 14px 20px; 
+      margin: 8px 0; 
+      border: none; 
+      border-radius: 4px; 
+      cursor: pointer; 
+   }  
+   #form div { 
+      border-radius: 5px; 
+      background-color: #f2f2f2; 
+      padding: 20px; 
+   }  
+&lt;/style&gt;  
+
+&lt;div id = "form"&gt;  
+   &lt;h2&gt;Book form&lt;/h2&gt; 
+   
+   &lt;?php   
+      if(isset($errors)) { 
+         echo $errors; 
+      } 
+      echo $form;  
+   ?&gt; 
+&lt;/div&gt; 
+</pre>
+<p>Here, we are just showing the form created in the action method. In addition, we are showing the errors, if any.</p>
+<h2>step 14: Checking the add book action</h2>
+<p>Requesting the url, http://localhost:8080/book/add or clicking the Add book navigation link, will show the form as follows,</p>
+<h3>Form</h3>
+<img src="images/updated_view.jpg" alt="Updated View" />
+<h3>Form with data</h3>
+<img src="images/form_with_data.jpg" alt="Form With Data" />
+<p>After entering the book information and submitting the page, the book information will be stored into the database and the page gets redirected to index page as follows.</p>
+<h3>Book list with newly added book</h3>
+<img src="images/book_list.jpg" alt="Book List" />
+<h2>step 15: Creating action to edit book</h2>
+<p>Create the functionality to edit and update the existing book information. Create a new action, action_edit in the book controller as follows.</p>
+<pre class="prettyprint notranslate">
+public function action_edit($id = false) { 
+   if(!($book = Model_Book::find($id))) { 
+      throw new HttpNotFoundException(); 
+   }  
+   
+   // create a new fieldset and add book model 
+   $fieldset = Fieldset::forge('book')-&gt;add_model('Model_Book'); 
+   $fieldset-&gt;populate($book);  
+   
+   // get form from fieldset 
+   $form = $fieldset-&gt;form();  
+   
+   // add submit button to the form
+   $form-&gt;add('Submit', '', array('type' =&gt; 'submit', 'value' =&gt; 'Submit'));  
+   
+   // build the form  and set the current page as action  
+   $formHtml = $fieldset-&gt;build(Uri::create('book/edit/' . $id));  
+   $view = View::forge('book/add'); 
+   $view-&gt;set('form', $formHtml, false);  
+   
+   if (Input::param() != array()) { 
+      try { 
+         $book-&gt;title = Input::param('title'); 
+         $book-&gt;author = Input::param('author'); 
+         $book-&gt;price = Input::param('price'); 
+         $book-&gt;save(); 
+         Response::redirect('book'); 
+      } catch (Orm\ValidationFailed $e) { 
+         $view-&gt;set('errors', $e-&gt;getMessage(), false); 
+      } 
+   }  
+   $this-&gt;template-&gt;title = "Book edit page"; 
+   $this-&gt;template-&gt;content = $view; 
+}
+</pre>
+<p>It is similar to add action, except it searches the requested book by id before processing the page. If any book information is found in the database, it will proceed and show the book information in the form. Otherwise, it will throw file not found exception and exit.</p>
+<h2>step 16: Create the view for edit action</h2>
+<p>Create the view for edit book action. Here, we are using the same view used for add action.</p>
+<h2>step 17: Checking the edit book action.</h2>
+<p>Click the edit link of any book in the book listing page, it will show the corresponding book form as follows &minus;</p>
+<h3>Form with book details</h3>
+<img src="images/form_book_details.jpg" alt="Form Book Details" />
+<h2>step 18: Create action to delete book</h2>
+<p>Create the functionality to delete book from the bookstore. Create a new action, action_delete in the book controller as follows,</p>
+<pre class="prettyprint notranslate">
+public function action_delete($id = null) { 
+   if ( ! ($book = Model_Book::find($id))) { 
+      throw new HttpNotFoundException(); 
+
+   } else { 
+      $book-&gt;delete(); 
+   } 
+   Response::redirect('book'); 
+} 
+</pre>
+<p>Here, we are checking for the existence of book in the database using the supplied book id. If the book is found, then it is deleted and redirected to index page. Otherwise, a page not found information will be shown.</p>
+<h2>step 19: Checking the delete action</h2>
+<p>Check the delete action by clicking the delete link in the book listing page. It will delete the requested book and then again be redirected to the index page.</p>
+<p>Finally, all the functionalities to add, edit, delete, and list the book information is created.</p>
+<p>FuelPHP is simple, flexible, scalable, and easily configurable compared to other MVC based PHP frameworks. It provides all the features of the modern MVC framework. It can be used as is or can be changed completely to suit our needs. Above all, it is a great choice for web development.</p>
+<div class="d-flex justify-content-between border-bottom border-top py-2" id="bottom_navigation">
+<a href="index-2.html" class="pre-btn"><i class="fal fa-chevron-circle-left"></i> Previous Page</a>
+<a id="print-page" href="#" class="pre-btn d-none d-sm-block"><i class="fal fa-print"></i> Print Page</a>
+<a href="fuelphp_installation.html" class="nxt-btn">Next Page <i class="fal fa-chevron-circle-right"></i>&nbsp;</a>
+</div>
+<style>
+@media (max-width: 1199.98px){ .navbar-expand-xl .navbar-brand .navbar-brand-item{height:35px!important; width:auto;} }
+@media (min-width: 1200px){
+.navbar-expand-xl .navbar-brand .navbar-brand-item{width:275px!important; height:42px!important; display:block;} }
+</style>
+			<div class="google-bottom-ads" id="google-bottom-ads">
+				<div>Advertisements</div>
+				<div>
+					<div id="adp_bottom_ads"></div>
+					<script>
+						var adPos = document.getElementById('adp_bottom_ads');
+						var mobile_ad_id = "6d621d7e-9531-4f26-810f-68af67dc6366";
+						var desktop_ad_id = "4951d1d6-24d4-4a31-afb7-2c22c489eae1";
+						var adpushup = adpushup || {};
+						adpushup.que = adpushup.que || [];
+						adpushup.que.push(function() {
+							var ad_id = window.innerWidth <= 768 ? mobile_ad_id : desktop_ad_id;
+							adPos.innerHTML = '<div id="' + ad_id + '" class="_ap_apex_ad"></div>';
+							adpushup.triggerAd(ad_id);
+						});
+					</script>
+				</div>
+			</div>
+		</div>
+	<!-- Tutorial Content Ends Here -->
+
+	<!-- Right Column Starts Here -->
+	<div class="col-sm-6 col-md-3 col-xl-3">
+				<div class="data-sticky" id="google-right-ads">
+			<div class="google-right-ad" style="margin: 0px auto !important;margin-top:5px;min-height:280px!important">
+				<div id="2557b9b8-4c1f-4586-a953-f123dbd2ed8e" class="_ap_apex_ad">
+					<script>
+						if( window.innerWidth > 768 ){
+						   var adpushup = adpushup || {};
+						   adpushup.que = adpushup.que || [];
+						   adpushup.que.push(function() {
+						   adpushup.triggerAd("2557b9b8-4c1f-4586-a953-f123dbd2ed8e");
+						   });
+						}
+					</script>
+				</div>
+			</div>
+			<div class="google-right-ad" style="margin-top:16px;min-height:280px!important">
+				<div id="b078e6a3-e1b7-40fe-b690-11ac441ad2d5" class="_ap_apex_ad">
+					<script>
+						if( window.innerWidth > 768 ){
+						   var adpushup = adpushup || {};
+						   adpushup.que = adpushup.que || [];
+						   adpushup.que.push(function() {
+						   adpushup.triggerAd("b078e6a3-e1b7-40fe-b690-11ac441ad2d5");
+						   });
+						}
+					</script>
+				</div>
+			</div>
+			<div class="google-right-ad" style="margin-top:16px;margin-bottom:15px;min-height:600px!important">
+				<div id="8f8814c2-d64c-4d26-9cb9-543653c0b48f" class="_ap_apex_ad">
+					<script>
+						if( window.innerWidth > 768 ){
+						   var adpushup = adpushup || {};
+						   adpushup.que = adpushup.que || [];
+						   adpushup.que.push(function() {
+						   adpushup.triggerAd("8f8814c2-d64c-4d26-9cb9-543653c0b48f");
+						   });
+						}
+					</script>
+				</div>
+			</div>
+			<!-- Right Column Ends Here -->
+		</div>
+	</div>
+</div>
+</div>
+</main>
+
+
+
+<footer class="py-3 card navbar-dark border-top" id="footer">
+	<!-- ======================= Annual Membership -->
+	<div class="py-4 bg-white">
+		<div class="container">
+			<div class="row g-4">
+			<!-- Action box item -->
+				<div class="col-lg-6 position-relative overflow-hidden">
+					<a href="https://www.tutorialspoint.com/market/business/subscription.jsp" target="_blank" title="Annual Membership">
+						<div class="bg-primary bg-opacity-10 rounded-3 p-5 h-100">
+							<div class="position-absolute bottom-0 end-0 me-3">
+								<img src="https://www.tutorialspoint.com/images/annual-membership-wraps.svg" class="h-100px h-sm-200px" alt="Annual Membership" style="border-bottom-right-radius:10px;">
+							</div>
+							<div class="row">
+								<div class="col-sm-8 position-relative">
+									<h3 class="mb-1">Annual Membership</h3>
+									<p class="mb-3 h5 fw-light lead">Enjoy unlimited access on 5500+ Hand Picked Quality Video Courses</p>
+									<div class="btn btn-business mb-0"><i class="fal fa-check"></i> Subscribe Now</div>
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<!-- Action box item -->
+				<div class="col-lg-6 position-relative overflow-hidden">
+					<a href="https://www.tutorialspoint.com/business/index.asp#demoRequest" target="_blank" title="Business Pack">
+						<div class="bg-secondary rounded-3 bg-opacity-10 p-5 h-100">
+							<div class="position-absolute bottom-0 end-0 me-3">
+								<img src="https://www.tutorialspoint.com/images/business-banner-wraps.svg" class="h-100px h-sm-200px" alt="Training for a Team">
+							</div>
+							<div class="row">
+								<div class="col-sm-8 position-relative">
+									<h3 class="mb-1">Training for a Team</h3>
+									<p class="mb-3 h5 fw-light lead">Affordable solution to train a team and make them project ready.</p>
+									<div class="btn btn-warning mb-0"><i class="fal fa-check me-1"></i> Request a Demo</div>
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- ======================= Annual Membership -->
+	<div class="container">
+		<div class="row g-4">
+			<div class="col-lg-12 text-center">
+				<a class="me-0 pb-4" href="https://www.tutorialspoint.com/index.htm">
+					<img class="light-mode-item" src="https://www.tutorialspoint.com/static/images/logo.png?v=9.01" alt="Tutorials Point" style="height:42px;">
+					<img class="dark-mode-item" src="https://www.tutorialspoint.com/static/images/logo-w.png?v=9.10" alt="Tutorials Point" style="height:42px;">
+				</a>
+				<ul class="nav justify-content-center py-3 mt-md-0 ">
+					<li class="nav-item"><a class="nav-link fw-bold" href="https://www.tutorialspoint.com/about/index.htm"><i class="fal fa-globe"></i> About us</a></li>
+					<li class="nav-item"><a class="nav-link fw-bold" href="https://www.tutorialspoint.com/about/return_refund_policy.htm"> <i class="fal fa-check"></i> Refund Policy</a></li>
+					<li class="nav-item"><a class="nav-link fw-bold" href="https://www.tutorialspoint.com/about/about_terms_of_use.htm"><i class="fal fa-check"></i> Terms of use</a></li>
+					<li class="nav-item"><a class="nav-link fw-bold" href="https://www.tutorialspoint.com/about/about_privacy.htm"> <i class="fal fa-shield-check"></i> Privacy Policy</a></li>
+					<li class="nav-item"><a class="nav-link fw-bold" href="https://www.tutorialspoint.com/about/faq.htm"><i class="fal fa-question-circle"></i> FAQ's</a></li>
+					<li class="nav-item"><a class="nav-link fw-bold" href="https://www.tutorialspoint.com/about/contact_us.htm"><i class="fal fa-map-marker-alt"></i> Contact</a></li>
+				</ul>
+				<p class="small">Copyright © TUTORIALS POINT (INDIA) PRIVATE LIMITED. All Rights Reserved.</p>
+			</div>
+			<div id="privacy-banner">
+				<div>
+					<p>We make use of First and third party cookies to improve our user experience. By using this website, you agree with our Cookies Policy.
+						<a id="banner-accept" href="#">Agree</a>
+						<a id="banner-learn" href="https://www.tutorialspoint.com/about/about_cookies.htm" target="_blank">Learn more</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+
+<div class="back-top">
+<i class="fal fa-angle-up position-absolute top-50 start-50 translate-middle"></i>
+</div>
+<script async src="https://www.tutorialspoint.com/static/js/script-min.js?v=0.40"></script>
+<script type="text/javascript">
+    var AddShoppersWidgetOptions = { 'loadCss': false, 'pushResponse': false };
+    (!function(){
+        var t=document.createElement("script");
+        t.type="text/javascript",
+        t.async=!0,
+        t.id="AddShoppers",
+        t.src="https://shop.pe/widget/widget_async.js#6434190bc032b7050cd12cdc",
+        document.getElementsByTagName("head")[0].appendChild(t)
+    }());
+</script>
+<script>
+  (function(w,d,t,r,u)
+  {
+    var f,n,i;
+    w[u]=w[u]||[],f=function()
+    {
+      var o={ti:"97039426", enableAutoSpaTracking: true};
+      o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")
+    },
+    n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function()
+    {
+      var s=this.readyState;
+      s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)
+    },
+    i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)
+  })
+  (window,document,"script","http://bat.bing.com/bat.js","uetq");
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX9ZP4VY84"></script>
+<script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+     gtag('config', 'G-EX9ZP4VY84');
+</script>
+</body>
+
+<!-- Mirrored from www.tutorialspoint.com/fuelphp/fuelphp_complete_working_example.htm by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 10 Jun 2023 17:44:10 GMT -->
+</html>

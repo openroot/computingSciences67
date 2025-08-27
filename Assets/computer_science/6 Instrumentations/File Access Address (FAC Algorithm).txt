@@ -1,0 +1,78 @@
+----------------------------------------------------------------------------------------------------------------------
+
+Interesting Computer Science.
+
+a huge problem about [File Handling] across World is, alike hardware address Files are not capable to have address like NIC/MAC Address.
+
+I think the solution is pretty and simple, which means it would be <Future Safe Science>, regarding [File handling] in computer science.
+
+_example_content.txtattached
+
+----------------------------------------------------------------------------------------------------------------------
+
+So, in above example i simplified the science in example first manner.
+
+Now explanation is:
+every File when getting generated their minimum & maximum a exact same File ought to be generated and kept in the same directory,
+but with a company-led keyword like i demonstrated with the english word "attached" to the end of the File name of the
+calling it as
+
+"<Address> of the File" - which was the [copy] <- of the real File.
+
+----------------------------------------------------------------------------------------------------------------------
+
+Now, question is when a 256 or 1024 bit hash-code can be act as Address and can be kept as
+that proposed 2nd File, then why need to have original File as Address but with company-led keyword (like i use "attached")?
+
+Answer is, that's a valid point of fundamentals of address handling (nice job fellow scientists did in start),
+but it was about soft-data which is not costly as hardware where it go through costly process of providing
+a future-proof unlimited Addresses to soft-data alike NIC/MAC Address to Hardwares.
+
+It must follow the flexibility of Files and it's purpose to be Soft.
+
+Even it's taking ~double as space to keep the File in storage,
+it would be provided with (with extra headache [of every save, update and delete of the original File need update the Addressed-on File as well] as like provisioning and maintenance of MAC Address) following features:
+
+1. A permanent cross-check address as a duplicate File in a folder is not possible in Universal Computer Operating System.
+
+2. No need of 1st party maintainer of one or any File, well of-course me talking about the maintainer oraganization of the Address (if you forgetting/confusing Hardware Address like MAC Address) of a File.
+
+3. A File act as a File, means a existing file in any sector today is untouched makes it future proof. Even present and past proof.
+It just the moment a company starts following the deployment it starts getting the benefits of these features.
+(Well basically i mean no hamper to touch the basic File architecture in possibility of environments, but might need mere bunch of added storage devices as a physical cost, apart developer costs which would be minimal reasonably the simplicity of the algorithm.)
+
+4. It's free of complex prototyping in 2nd party maintainer again of the 1st party of Address alike MAC take an example such.
+
+5. It can kick start as a regardless project upstream development up-to odd organizations like SQL based functions to not required complexity of root systems but safe & secured with exhausted to 3rd party, perhaps HTML query localhost etc.
+(Which, means it give fundamentally architect system apart how the beholder system is changing if it on future acquires it then migration is flat.)
+
+6. so if a system is locked with this algorithm from fundamental, then as a file is having Address, then file duplication and every other
+assert problems would rejected on initial file generation with minimal
+cost of verification
+if a MAC then IP then Profile is having area-wise duplication or not, how (this) a Profile duplicate can be identified.
+
+(
+Profile duplicate, which is a huge problem of Computer Scientists by far,
+because, different scientists follow different policies to denote end-consumer, then
+a common or un-common ground is available my system or MAC system approach
+
+So (me talking about this particular feature as a Problem, regardless) if, my system (individual File having a real Address) is followed then no problem at all,
+however if existing system (inode Address) is followed then their no problem at all too, as
+frankly, minimum & maximum a exact same inode-list (same Algorithm when followed) at creation would give the same control on where
+scientist might need mere maintain of inode-and-inode list only. NO NEED TO DIVE INTO FILE DUPLICATION EXCEPT INODE-LIST DUPLICATION ONLY.
+Say, a Blu-RAY Movie is stored somewhere in other earth(server), then Blu-RAY is Blu-RAY not day-to-day Editable regardless (the Size) Owner/Profile perhaps having A INODE can be shared common or un-common ground is available my system or MAC system approach, but then INODE have to be maintained as of this algorithm.
+
+Wait, not to quick to be happy, next feature became a need today.
+)
+
+7. It eliminates DDBMS concept which virused File handling all over Computer Science became corrupt (me not talking about World but science it-self)
+with by birth inhabitable back-up as an Address is available eliminating zero complexity.
+
+n-bonus. This is the algorithm of {Nintendo Car Race} game written long ago, specially understandable in the i-special version of random mysterious infinite patterned never ending but
+factually it's repeating the Player's step(s), pushing back to player again to do mind-trick, to make the player as player's super fast.
+Isn't it genius? Like a Real real Game.
+No fun to be become P T Usha, when me buying my stuff to not become some other capacity of genius.
+
+~wordcount 907
+
+----------------------------------------------------------------------------------------------------------------------

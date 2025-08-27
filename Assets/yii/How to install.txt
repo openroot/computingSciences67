@@ -1,0 +1,122 @@
+[ How to install 'yii [advanced]' from zip file to 'linux' system. ]
+********************
+********************
+
+1. Place latest [yii-advanced zip] file -> Extract into desired location -> Extract at first-directory.
+
+2. Open the directory with 'Visual Studio Code'.
+
+3. Open 'Source Control' tab -> Click 'Intialize Git' -> Add message as 'first commit' -> Click 'Commit & Push'.
+
+4. Go to 'Run' -> 'Add Configuration...' -> Click 'PHP'.
+(a '.vscode' directory will be defaulted.)
+
+5. Open 'Source Control' tab  -> Add message as 'vscode configuration added' -> Click 'Commit & Push'.
+
+6. Open a Linux Terminal -> ://mysql -u devop -p -> ://<default_password> -> ://drop database test_yii; -> create database test_yii; -> ://show databases;
+(on success a 'test_yii' database can be visualize)
+
+7. Go to 'View' -> 'Command Palette...' -> Execute 'Composer: update'.
+(on success 'composer.lock' defaulted with updates, only if not latest)
+
+8. Open 'Source Control' tab  -> Add message as 'composer.lock updated' -> Click 'Commit & Push'.
+
+9. Go to 'Terminal' -> 'New Terminal' at first directory -> ://php init -> ://0 -> ://yes
+(on success "...initialization completed." can be visualize)
+
+10. Go to (if) opened 'vscode terminal' at first directory -> ://nano common/config/main-local.php -> Edit following:
+dbname=test_yii
+username=devop
+password=<default_password>
+-> Ctrl+x -> y -> Enter to overwrite
+
+11. Go to (if) opened 'vscode terminal' at first directory -> ://php yii migrate -> ://yes
+(on success "...Migrated up successfully." can be visualize)
+
+12. Open 'Database' tab -> Click 'Create Connection' -> Edit following:
+Name: test_yii
+Host: localhost
+Port: 3306
+Username: devop
+Password: <default_password>
+Database: test_yii
+-> Click '+Connect' (on success "Connect Success!" can be visualize) -> Click 'Save'. (on success database structure can be visualize in 'Database' tab)
+
+13. Open a Linux Terminal -> ://netstat -plnt -> ://kill [id of '<>/php'] -> at vscode open 'requirements.php' -> Right click on file -> Click 'PHP Server: Serve Project' -> Browse to
+'http://localhost:3000/requirements.php'
+'http://localhost:3000/frontend/web/index.php'
+'http://localhost:3000/backend/web/index.php'.
+(on success all these three pages can be visualize)
+
+14. Browse to 'http://localhost:3000/frontend/web/index.php?r=site%2Fsignup' -> Fill in a user credential -> Click 'SIgnup'.
+
+15. Open 'Database' tab -> Navigate & click table 'user'  -> Update row of the user's field 'status' as '10' -> Browse to 'http://localhost:3000/frontend/web/index.php?r=site%2Flogin' -> Fill in user same credential -> Click 'Login'.
+(on success logged in page can be visualize)
+
+16. Open 'requirements.php' -> Set a breakpoint at random line 152 -> Go to 'run' -> Click 'Start Debugging' -> Browse to 'http://localhost:3000/requirements.php'.
+(on success breakpoint is hit can be visualize)
+
+17. Browse to 'http://localhost:3000/frontend/web/index.php?r=gii'
+(an 'yii' extension that can write code from gui to 'yii' backend) ->
+'yii' installation finished.
+
+
+
+prerequisites:
+1. 'PHP Environment' is installed with Setup & Running as Service [distros:
+PHP,
+MySQL].
+
+2. 'Visual Studio Code' is installed with PHP Setup [extensions:
+MySQL (publisher:"Weijan Chen"),
+PHP Debug (publisher:"Xdebug"),
+PHP DocBlocker (publisher:"Neil Brayfield"),
+PHP Intelephense (publisher:"Ben Mewburn"),
+PHP Server (publisher:"brapifra")
+Composer (publisher:"DEVSENSE")].
+
+
+
+note:
+1. at step 9 on selection 'yes' following output is recorded:
+  Start initialization ...
+
+   generate backend/config/codeception-local.php
+   generate backend/config/main-local.php
+   generate backend/config/params-local.php
+   generate backend/config/test-local.php
+   generate backend/web/index-test.php
+   generate backend/web/index.php
+   generate backend/web/robots.txt
+   generate common/config/codeception-local.php
+   generate common/config/main-local.php
+   generate common/config/params-local.php
+   generate common/config/test-local.php
+   generate console/config/main-local.php
+   generate console/config/params-local.php
+   generate console/config/test-local.php
+   generate frontend/config/codeception-local.php
+   generate frontend/config/main-local.php
+   generate frontend/config/params-local.php
+   generate frontend/config/test-local.php
+   generate frontend/web/index-test.php
+   generate frontend/web/index.php
+   generate frontend/web/robots.txt
+   generate yii
+   generate yii_test
+   generate yii_test.bat
+   generate cookie validation key in backend/config/main-local.php
+   generate cookie validation key in common/config/codeception-local.php
+   generate cookie validation key in frontend/config/main-local.php
+      chmod 0777 backend/runtime
+      chmod 0777 backend/web/assets
+      chmod 0777 console/runtime
+      chmod 0777 frontend/runtime
+      chmod 0777 frontend/web/assets
+      chmod 0755 yii
+      chmod 0755 yii_test
+
+  ... initialization completed.
+
+********************
+********************

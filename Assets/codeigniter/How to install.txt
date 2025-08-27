@@ -1,0 +1,4 @@
+> setup & start CodeIgniter from downloaded zip file
+1. unzip CodeIgniter[zip file] into desired location
+2. open terminal at root extracted directory and run "php spark serve"
+3. follow the "localhost link" provided on success start to open CMS at WebBrowser.

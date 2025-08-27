@@ -1,0 +1,28 @@
+AntiMicroX
+Artha
+Celluloid
+CMatrix
+FileZilla
+Gimp
+GitHub Desktop
+Glade
+Gnome Clocks
+Google Chrome
+GParted
+Grub Customizer
+Kate
+Konsole
+OBS Studio
+Pulse Effects
+qBittorent
+Remmina
+Rhythmbox
+Snap Store
+Stremio
+TeamViewer
+Timeshift
+Ulauncher
+VirtualBox
+Visual Studio Code
+VLC media player
+XSensors

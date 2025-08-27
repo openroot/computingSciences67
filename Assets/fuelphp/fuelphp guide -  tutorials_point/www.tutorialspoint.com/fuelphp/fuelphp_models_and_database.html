@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<!-- Mirrored from www.tutorialspoint.com/fuelphp/fuelphp_models_and_database.htm by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 10 Jun 2023 17:43:50 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+<title>FuelPHP -  Models & Database</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=yes">
+<meta name="Keywords" content="Database, Models, FuelPHP,  HTML, Python, CSS, SQL, JavaScript, Perl, PHP, Java, C, C++, C#, jQuery, Bootstrap, Colors, XML, MySQL, Icons, NodeJS, React, Graphics, Angular, R, AI, Git, Machine Learning, Data Science, Tutorials, Programming, Data Structure, Algorithms, Web Development, Training, Learning, Quiz, Exercises, Courses, References, Computer Science, Management, Finance, Examples, Articles, Demos, Tips, Website">
+<meta name="Description" content="FuelPHP Models Database - Model plays an important role in FuelPHP web framework. It represents the business entities of the application. They are either provided by customers or fetched from backend database, manipulated according to the business rules and persisted back into the database. Let us learn about models and how">
+<link rel="canonical" href="fuelphp_models_and_database.html" />
+<link rel="icon" href="https://www.tutorialspoint.com/favicon.ico" type="image/x-icon" >
+<meta property="og:image" content="https://www.tutorialspoint.com/images/tp_big_logo.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="400">
+<meta property="og:image:height" content="234">
+<meta property="og:title" content="FuelPHP -  Models & Database">
+<meta property="og:description" content="FuelPHP Models Database - Model plays an important role in FuelPHP web framework. It represents the business entities of the application. They are either provided by customers or fetched from backend database, manipulated according to the business rules and persisted back into the database. Let us learn about models and how">
+<link id="style-switch" rel="stylesheet" href="https://www.tutorialspoint.com/static/css/purge/style-min.css?v=6.03">
+<link rel="stylesheet" href="https://www.tutorialspoint.com/static/css/custom.css?v=8.19.3">
+<style>ul.toc li.heading, .back-top, a.demo, .home-intro-sub{background:#232323; color:#fff;}  ul.toc li.heading:hover{background:#232323;} .btn-grey-border{background:#232323; color:#fff; border:1px solid #232323;} .course-box{background:#232323;} .qa-content{padding:0px 0px 0px 0px!important;} a.demo{background:#232323!important;} @media (max-width: 1199.98px){.navbar-expand-xl .navbar-brand .navbar-brand-item{height:38px!important; width:auto;}}
+</style>
+<script id="adv" data-cfasync="false">(function(w, d) { var s = d.createElement('script'); s.src = 'http://cdn.adpushup.com/40046/adpushup.js'; s.type = 'text/javascript'; s.async = true; (d.getElementsByTagName('head')[0] || d.getElementsByTagName('body')[0]).appendChild(s); })(window, document);</script>
+<script>(function(w,d){var adSlot=d.createElement("div");adSlot.className="ad-slot ad gpt-div-slot",adSlot.style="position: absolute; visibility: hidden;",adSlot.textContent="&nbsp;",d.body.appendChild(adSlot),setTimeout((function(){if(0===adSlot.clientHeight){var t=d.createElement("script");t.setAttribute("src","https://delivery.adrecover.com/18107/adRecover.js"),t.setAttribute("type","text/javascript"),t.setAttribute("async",!0),d.head.append(t)}}),0);})(window, document);</script>
+</style>
+</head>
+<body>
+<div class="navbar-top navbar-dark d-xl-block py-2 mx-2 mx-md-4 rounded-bottom-4">
+	<div class="container-fluid px-3 px-xl-0">
+		<div class="d-lg-flex justify-content-lg-between align-items-center top-nav-links">
+			<ul class="nav align-items-center justify-content-center">
+				<li class="nav-item" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" data-bs-original-title="Home Page">
+					<a class="nav-link" href="https://www.tutorialspoint.com/index.htm"><i class="fal fa-home-alt me-1"></i> Home</a>
+				</li>
+				<li class="nav-item" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" data-bs-original-title="Online Coding System">
+					<a class="nav-link" href="https://www.tutorialspoint.com/codingground.htm"><i class="fal fa-code me-1"></i> Coding Ground</a>
+				</li>
+				<li class="nav-item" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" data-bs-original-title="Job Openings">
+					<span><a class="nav-link" href="https://www.tutorialspoint.com/about/about_careers.htm"><i class="fal fa-suitcase me-1"></i> Jobs</a></span>
+				</li>
+				<li class="nav-item" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" data-bs-original-title="Digital Whiteboard">
+					<span><a class="nav-link" href="https://www.tutorialspoint.com/whiteboard.htm"><i class="fal fa-chalkboard me-1"></i> Whiteboard</a></span>
+				</li>
+				<li class="nav-item" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" data-bs-original-title="Developer's Tools">
+					<span><a class="nav-link" href="https://www.tutorialspoint.com/online_dev_tools.htm"><i class="fal fa-tools me-1"></i> Tools</a></span>
+				</li>
+				<li class="nav-item" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" data-bs-original-title="Corporate Trainings">
+					<span><a class="nav-link" href="https://www.tutorialspoint.com/business/index.asp"><i class="fal fa-chalkboard-user me-1"></i> Corporate Training</a></span>
+				</li>
+			</ul>
+			<!-- Navbar top Right-->
+			<div class="d-flex align-items-center justify-content-center">
+				<div class="navbar-nav ms-2">
+				  <div class="modeswitch-wrap" id="darkModeSwitch">
+					 <div class="modeswitch-item">
+						<div class="modeswitch-icon">
+							<i class="fal fa-sun toggle-sun"></i>
+							<i class="fal fa-moon toggle-moon"></i>
+						</div>
+					 </div>
+				  </div>
+				</div>
+				<div class="me-3c top-nav-social">
+				  <a class="nav-link" href="https://www.tutorialspoint.com/market/teach_with_us.jsp" target="_self"  data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" data-bs-original-title="Teach with us"><i class="fal fa-users-class me-2"></i> <span>Teach with us</span></a>
+				</div>
+				<ul class="list-unstyled d-flex mb-0 top-nav-social">
+					<li><a class="px-2 nav-link" rel="nofollow" aria-label="Facebook" href="https://www.facebook.com/tutorialspointindia" target="_blank"   data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" data-bs-original-title="Tutorialspoint Facebook"><i class="fab fa-facebook"></i></a> </li>
+					<li><a class="px-2 nav-link" rel="nofollow" aria-label="Instagram" href="https://www.instagram.com/tutorialspoint_/" target="_blank" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" data-bs-original-title="Tutorialspoint Instagram"><i class="fab fa-instagram"></i></a> </li>
+					<li><a class="px-2 nav-link" rel="nofollow" aria-label="Twitter" href="https://twitter.com/tutorialspoint" target="_blank" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" data-bs-original-title="Tutorialspoint Twitter"><i class="fab fa-twitter"></i></a> </li>
+					<li><a class="px-2 nav-link" rel="nofollow" aria-label="YouTube" href="https://www.youtube.com/channel/UCVLbzhxVTiTLiVKeGV7WEBg" target="_blank" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" data-bs-original-title="Tutorialspoint Youtube"><i class="fab fa-youtube"></i></a> </li>
+					<li><a class="px-2 nav-link" rel="nofollow" aria-label="LinkedIn" href="https://www.linkedin.com/authwall?trk=bf&amp;trkInfo=AQEkqX2eckF__gAAAX-wMwEYvrsjBVbEtWQd4pgEdVSzkL22Nik1KEpY_ECWLKDGc41z8IOZWr2Bb0fvJplT60NPBtSw87J6QCpc7wD4qQ3iU13n6xJtBxME5o05Wmpg5JPm5YY=&amp;originalReferer=&amp;sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Ftutorialspoint" target="_blank"  data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" data-bs-original-title="Tutorialspoint LinkedIn"><i class="fab fa-linkedin-in"></i></a> </li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<header class="navbar-light navbar-sticky header-static">
+	<nav class="navbar navbar-expand-xl">
+		<div class="container-fluid px-3 px-xl-4">
+			<a class="navbar-brand" href="https://www.tutorialspoint.com/index.htm"><img class="light-mode-item navbar-brand-item" src="https://www.tutorialspoint.com/static/images/logo.png?v2" alt="logo"> <img class="dark-mode-item navbar-brand-item" src="https://www.tutorialspoint.com/static/images/logo-w.png?v2" alt="logo"></a>
+			<button class="navbar-toggler-toc collapsed ms-auto-toc" type="button"  id="btn-tutorial-toc">
+				<span><i class="fal fa-bars"></i></span>
+			</button>
+			<button class="navbar-toggler ms-auto" type="button" id="btn-menu-collapse">
+				<i class="fal fa-user-circle fs-user-size"></i>
+			</button>
+			<div class="navbar-collapse w-100 collapse" id="navbarCollapse">
+				<ul class="navbar-nav navbar-nav-scroll me-auto">
+					<li class="nav-item nav-xs-login">
+						<a class="nav-link"><i class="fal fa-sign-in me-2"></i>Login</a>
+					</li>
+					<li class="nav-item dropdown dropdown-menu-shadow-stacked">
+						<a href="javascript:void(0);" class="nav-link" id="categoryMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<i class="fal fa-th-large fs-5 me-xl-1 d-xl-none"></i>
+							<i class="fal fa-th me-1 d-none d-xl-inline-block"></i>
+							<span class="d-xl-inline-block">Category <i class="fal fa-angle-down"></i></span>
+						</a>
+												<ul class="dropdown-menu categories-menu shadow" id="categories-menu">
+							<li><a href="https://www.tutorialspoint.com/academic_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Academic Tutorials</a></li>
+							<li><a href="https://www.tutorialspoint.com/big_data_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Big Data &amp; Analytics </a></li>
+							<li><a href="https://www.tutorialspoint.com/computer_programming_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Computer Programming </a></li>
+							<li><a href="https://www.tutorialspoint.com/computer_science_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Computer Science </a></li>
+							<li><a href="https://www.tutorialspoint.com/database_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Databases </a></li>
+							<li><a href="https://www.tutorialspoint.com/devops_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> DevOps </a></li>
+							<li><a href="https://www.tutorialspoint.com/digital_marketing_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Digital Marketing </a></li>
+							<li><a href="https://www.tutorialspoint.com/engineering_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Engineering Tutorials </a></li>
+							<li><a href="https://www.tutorialspoint.com/upsc_ias_exams.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Exams Syllabus </a></li>
+							<li><a href="https://www.tutorialspoint.com/famous_monuments.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Famous Monuments </a></li>
+							<li><a href="https://www.tutorialspoint.com/gate_exams_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> GATE Exams </a></li>
+							<li><a href="https://www.tutorialspoint.com/latest_technologies.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Latest Technologies </a></li>
+							<li><a href="https://www.tutorialspoint.com/machine_learning_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Machine Learning </a></li>
+							<li><a href="https://www.tutorialspoint.com/mainframe_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Mainframe Development </a></li>
+							<li><a href="https://www.tutorialspoint.com/management_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Management Tutorials </a></li>
+							<li><a href="https://www.tutorialspoint.com/maths_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Mathematics Tutorials</a></li>
+							<li><a href="https://www.tutorialspoint.com/microsoft_technologies_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Microsoft Technologies </a></li>
+							<li><a href="https://www.tutorialspoint.com/misc_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Misc tutorials </a></li>
+							<li><a href="https://www.tutorialspoint.com/mobile_development_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Mobile Development </a></li>
+							<li><a href="https://www.tutorialspoint.com/java_technology_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Java Technologies </a></li>
+							<li><a href="https://www.tutorialspoint.com/python_technologies_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Python Technologies </a></li>
+							<li><a href="https://www.tutorialspoint.com/sap_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> SAP Tutorials </a></li>
+							<li><a href="https://www.tutorialspoint.com/scripting_lnaguage_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Programming Scripts </a></li>
+							<li><a href="https://www.tutorialspoint.com/selected_reading.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Selected Reading </a></li>
+							<li><a href="https://www.tutorialspoint.com/software_quality_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Software Quality </a></li>
+							<li><a href="https://www.tutorialspoint.com/soft_skill_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Soft Skills </a></li>
+							<li><a href="https://www.tutorialspoint.com/telecom_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Telecom Tutorials </a></li>
+							<li><a href="https://www.tutorialspoint.com/upsc_ias_exams.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> UPSC IAS Exams </a></li>
+							<li><a href="https://www.tutorialspoint.com/web_development_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Web Development </a></li>
+							<li><a href="https://www.tutorialspoint.com/sports_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Sports Tutorials </a></li>
+							<li><a href="https://www.tutorialspoint.com/xml_technologies_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> XML Technologies </a></li>
+							<li><a href="https://www.tutorialspoint.com/multi_language_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Multi-Language</a></li>
+							<li><a href="https://www.tutorialspoint.com/questions_and_answers.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Interview Questions</a></li>
+						</ul>
+											</li>
+				</ul>
+				<div class="navbar-collapse">
+					<div class="col-xl-9">
+						<div class="nav my-3 my-xl-0 px-4 flex-nowrap align-items-center">
+							<div class="nav-item w-100">
+								<form class="rounded position-relative">
+									<input class="form-control pe-4 bg-secondary bg-opacity-10 border-0 search-strings" type="search" placeholder="Search tutorials ..." id="search-strings" name="key" data-result="search-results" aria-label="Search">
+									<button type="button" id="btnSearch" class="btn bg-transparent px-2 py-0 position-absolute top-50 end-0 translate-middle-y"><i class="fal fa-search fs-6"></i></button>
+									<div class="search-box search-box-inn" id="search-results"></div>
+									<div class="clear"></div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<ul class="navbar-nav navbar-nav-scroll">
+					<li class="nav-item">
+						<a class="nav-link" href="https://www.tutorialspoint.com/latest/prime-packs" target="_self"><i class="fal fa-cubes me-1"></i>Prime Packs</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="https://www.tutorialspoint.com/market/index.asp" target="_self"><i class="fal fa-play-circle me-1"></i>Courses</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="https://www.tutorialspoint.com/latest/ebooks" target="_self"><i class="fal fa-book-reader me-1"></i>eBooks</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="https://www.tutorialspoint.com/tutorialslibrary.htm" target="_self"><i class="fal fa-books me-1"></i>Library</a>
+					</li>
+					<li class="nav-item">
+					        <a class="nav-link" href="https://www.tutorialspoint.com/articles/index.php" target="_self"><i class="fal fa-money-check-edit me-1"></i> Articles</a>
+					</li>
+				</ul>
+			</div>
+			<div class="navbar-nav d-lg-inline-block nav-login">
+			   <a href="https://www.tutorialspoint.com/market/login.asp" class="btn btn-grey-border mb-0"><i class="fal fa-sign-in me-2"></i>Login</a>
+			</div>
+		</div>
+	</nav>
+</header>
+<main class="bg-light pb-4">
+<div class="container-fluid mt-3 px-3 px-xl-3">
+<div class="row g-4">
+<div class="col-sm-12 col-md-4 col-xl-3 ps-0 pe-0 collapse tutorial-toc" id="tocCollapse">
+<div class="card card-body bg-light pt-0 toc-nav">
+<div class="mini-logo">
+<img src="images/fuelphp-mini-logo.jpg" alt="FuelPHP Tutorial" /> 
+</div>
+<ul class="toc chapters" >
+<li class="heading">FuelPHP Tutorial</li>
+<li><a href="index-2.html">FuelPHP - Home</a></li>
+<li><a href="fuelphp_introduction.html">FuelPHP - Introduction
+<li><a href="fuelphp_installation.html">FuelPHP - Installation</a></li>
+<li><a href="fuelphp_architecture_overview.html">FuelPHP - Architecture Overview</a></li>
+<li><a href="fuelphp_simple_web_application.html">FuelPHP - Simple Web Application</a></li>
+<li><a href="fuelphp_configuration.html">FuelPHP - Configuration</a></li>
+<li><a href="fuelphp_controllers.html">FuelPHP - Controllers</a></li>
+<li><a href="fuelphp_routing.html">FuelPHP - Routing</a></li>
+<li><a href="fuelphp_requests_and_response.html">FuelPHP - Requests &amp; Response</a></li>
+<li><a href="fuelphp_views.html">FuelPHP - Views</a></li>
+<li><a href="fuelphp_presenters.html">FuelPHP - Presenters</a></li>
+<li><a href="fuelphp_models_and_database.html">FuelPHP - Models &amp; Database</a></li>
+<li><a href="fuelphp_form_programming.html">FuelPHP - Form Programming</a></li>
+<li><a href="fuelphp_validation.html">FuelPHP - Validation</a></li>
+<li><a href="fuelphp_advanced_form_programming.html">Advanced Form Programming</a></li>
+<li><a href="fuelphp_file_uploading.html">FuelPHP - File Uploading</a></li>
+<li><a href="fuelphp_ajax.html">FuelPHP - Ajax</a></li>
+<li><a href="fuelphp_hmvc_request.html">FuelPHP - HMVC Request</a></li>
+<li><a href="fuelphp_themes.html">FuelPHP - Themes</a></li>
+<li><a href="fuelphp_modules.html">FuelPHP - Modules</a></li>
+<li><a href="fuelphp_packages.html">FuelPHP - Packages</a></li>
+<li><a href="fuelphp_cookie_and_session_management.html">Cookie &amp; Session Management</a></li>
+<li><a href="fuelphp_events.html">FuelPHP - Events</a></li>
+<li><a href="fuelphp_email_management.html">FuelPHP - Email Management</a></li>
+<li><a href="fuelphp_profiler.html">FuelPHP - Profiler</a></li>
+<li><a href="fuelphp_error_handling_and_debugging.html">Error Handling &amp; Debugging</a></li>
+<li><a href="fuelphp_unit_testing.html">FuelPHP - Unit Testing</a></li>
+<li><a href="fuelphp_complete_working_example.html">Complete Working Example</a></li>
+<li class="heading">FuelPHP Useful Resources</li>
+<li><a href="fuelphp_quick_guide.html">FuelPHP - Quick Guide</a></li>
+<li><a href="fuelphp_useful_resources.html">FuelPHP - Useful Resources</a></li>
+<li><a href="fuelphp_discussion.html">FuelPHP - Discussion</a></li>
+</ul>
+<ul class="toc reading">
+<li class="sreading">Selected Reading</li>
+<li><a target="_top" href="https://www.tutorialspoint.com/upsc_ias_exams.htm">UPSC IAS Exams Notes</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/developers_best_practices/index.htm">Developer's Best Practices</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/questions_and_answers.htm">Questions and Answers</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/effective_resume_writing.htm">Effective Resume Writing</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/hr_interview_questions/index.htm">HR Interview Questions</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/computer_glossary.htm">Computer Glossary</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/computer_whoiswho.htm">Who is Who</a></li>
+</ul>
+<div id="stickyparent" class="d-none d-sm-block">
+<div style="height:250px;width:300px;" id="sticky-ad">
+<div id="430c9911-782f-495d-88f9-69f58ca8c9a4" class="_ap_apex_ad" >
+<script>
+var adpushup = adpushup || {};
+adpushup.que = adpushup.que || [];
+adpushup.que.push(function() {
+adpushup.triggerAd("430c9911-782f-495d-88f9-69f58ca8c9a4");
+});
+</script>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Tutorial ToC Ends Here -->
+
+<!-- Tutorial Content Starts Here -->
+<div class="col-sm-12 col-md-8 col-xl-6 rounded-3 tutorial-content" id="mainContent">
+<h1>FuelPHP -  Models &amp; Database</h1>
+<hr/>
+<div id="adp_top_ads" style="text-align:center !important;overflow: hidden; max-height:99px;min-height:99px"></div>
+<script>
+     var adPos = document.getElementById('adp_top_ads');
+     var ad_id_720 = "8014640d-fd34-4b2e-9b1b-cc67234a2325";
+     var ad_id_650 = "2d1bb2c4-eb72-471d-9c80-1bf5514728c1";
+     var ad_id_300 = "df94a1a9-ae2f-432d-9a92-d93823ff4503";
+     var width = window.innerWidth;
+     var ad_id = ad_id_720;
+     if( width <= 768 ){
+        ad_id =  ad_id_300;
+        adPos.style.minHeight = "260px";
+        adPos.style.maxHeight = "260px";
+     }else if( width <= 1435 ){
+        ad_id =  ad_id_650;
+     }
+     adPos.innerHTML = '<div id="' + ad_id + '" class="_ap_apex_ad"></div>';
+     var adpushup = adpushup || {};
+     adpushup.que = adpushup.que || [];
+     adpushup.que.push(function() {
+     adpushup.triggerAd(ad_id);
+     });
+</script>
+<div class="mui-container-fluid button-borders">
+<div class="pre-btn">
+<a href="index-2.html"><i class="fal fa-chevron-circle-left"></i> Previous Page</a>
+</div>
+<div class="nxt-btn">
+<a href="fuelphp_installation.html">Next Page <i class="fal fa-chevron-circle-right"></i>&nbsp;</a>
+</div>
+</div>
+<div class="clear"></div>
+<p>Model plays an important role in FuelPHP web framework. It represents the business entities of the application. They are either provided by customers or fetched from backend database, manipulated according to the business rules and persisted back into the database. Let us learn about models and how they interact with back-end system in this chapter.</p>
+<h2>Creating a Model</h2>
+<p>In FuelPHP, model is simply plain PHP class extending built-in Model class. By default, models may be prefixed with Model_ similar to controllers and should be placed in <b>fuel/app/classes/model/</b> folder. Let us create a basic employee model and extend it as we proceed.</p>
+<h3>fuel/app/classes/model/employee.php</h3>
+<pre class="prettyprint notranslate">
+&lt;?php 
+   namespace Model; 
+
+   class Model_Employee extends \Model { 
+      public static function fetchAll() { 
+         // Code to fetch employee from database 
+      } 
+   }
+</pre>
+<h2>Access a Model</h2>
+<p>Once a model is defined, it can be freely used in any controller just by including it in the controller as follows.</p>
+<pre class="prettyprint notranslate">
+use \Model\Employee; 
+
+class Controller_Employee extends Controller { 
+   public function action_index() { 
+      $employees = Employee::fetchAll(); 
+   } 
+}
+</pre>
+<h2>Database Overview</h2>
+<p>FuelPHP provides its own database abstraction layer to fetch data from the database. It provides both basic as well as advanced ORM based tool. The basic toolkit consists of DB, DBUtil and Query_Builer based classes. The advanced toolkit is Orm. Orm toolkit is derived from the base toolkit and bundled as a separate package.</p>
+<h2>Database Configuration</h2>
+<p>FuelPHP separates the database settings from the main configuration file and the file is <b>fuel/app/config/db.php</b>. It supports a separate setting for each environment. Currently, FuelPHP supports MySQL, MySQLi, and PDO drivers. The sample setting is as follows &minus;</p>
+<pre class="prettyprint notranslate">
+&lt;?php  
+   return array ( 
+      'development' =&gt; array ( 
+         'type'           =&gt; 'mysqli', 
+         'connection'     =&gt; array ( 
+            'hostname'    =&gt; 'localhost', 
+            'port'        =&gt; '3306', 
+            'database'    =&gt; 'tutorialspoint_fueldb', 
+            'username'    =&gt; 'root', 
+            'password'    =&gt; 'password', 
+            'persistent'  =&gt; false, 
+            'compress'    =&gt; false, 
+         ), 
+         
+         'identifier'     =&gt; '`', 
+         'table_prefix'   =&gt; '', 
+         'charset'        =&gt; 'utf8', 
+         'enable_cache'   =&gt; true, 
+         'profiling'      =&gt; false, 
+         'readonly'       =&gt; false, 
+      ), 
+   )
+</pre>
+<h2>DB-based Toolkit</h2>
+<p>The <b>DB class</b> is the simplest option to access database from the application. It provides options to build the database query, execute it against the target database, and finally fetch the result. The <i>DB</i> class interacts with the following classes and provides a comprehensive database API.</p>
+<ul class="list">
+<li><p><b>Database_Connection</b> &minus; Singleton and main class to interact with the database</p></li>
+<li><p><b>Database_Query</b> &minus; Base, concrete class to execute the SQL query and fetch result</p></li>
+<li><p><b>Database_Query_Builder</b> &minus; Base, abstract class to build SQL query</p></li>
+<li><p><b>Database_Query_Builder_Join</b> &minus; Class to build SQL joins</p></li>
+<li><p><b>Database_Query_Builder_Where</b> &minus; Abstract class to build SQL query conditions</p></li>
+<li><p><b>Database_Query_Builder_Select</b> &minus; Concrete class to build SQL select query</p></li>
+<li><p><b>Database_Query_Builder_Insert</b> &minus; Abstract class to build SQL insert query</p></li>
+<li><p><b>Database_Query_Builder_Update</b> &minus; Abstract class to build SQL update query</p></li>
+<li><p><b>Database_Query_Builder_Delete</b> &minus; Abstract class to build SQL delete query</p></li>
+</ul>
+<p>The following diagram depicts the relationship between classes and the methods provided by the classes.</p>
+<img src="images/classes_methods.jpg" alt="Classes and Methods" />
+<h2>DB API</h2>
+<p>Let us learn the most important methods available in the DB class in this section.</p>
+<h3>instance</h3>
+<ul class="list">
+<li><p><b>Purpose</b> &minus; Creates and returns the new <i>Database_Connection</i> instance.</p></li>
+<li><p><b>Parameter</b> &minus;</p>
+<ul class="list">
+<li><p><b>$db</b> &minus; Database connection name defined in configuration file, optional.</p></li>
+</ul>
+</li>
+<li><p><b>Returns</b> &minus; Returns the <i>Database_Connection</i> object</p></li>
+</ul>
+<p>For example,</p>
+<pre class="prettyprint notranslate">
+$db = DB::instance(); 
+$db = DB::instance('test');
+</pre>
+<h3>query</h3>
+<ul class="list">
+<li><p><b>Purpose</b> &minus; Prepare the provided SQL statement and returns the Database_Query object, which can be used to insert, update, delete, or fetch the data from the database.</p></li>
+<li><p><b>Parameter</b> &minus;</p>
+<ul class="list">
+<li><p><b>$query</b> &minus; SQL statement, may contain placeholders;</p></li>
+<li><p><b>$type</b> &minus; SQL type, optional (DB::SELECT, DB::INSERT, DB::UPDATE and DB::DELETE)</p></li>
+</ul>
+</li>
+<li><p><b>Returns</b> &minus; Returns the <i>Database_Query</i> object</p></li>
+</ul>
+<p>For example,</p>
+<pre class="prettyprint notranslate">
+$query = DB::query('SELECT * FROM 'employees'');
+</pre>
+<h3>last_query</h3>
+<ul class="list">
+<li><p><b>Purpose</b> &minus; To get the last executed query</p></li>
+<li><p><b>Parameter</b> &minus; None</p></li>
+<li><p><b>Returns</b> &minus; Returns the last executed query</p></li>
+</ul>
+<p>For example,</p>
+<pre class="prettyprint notranslate">
+$employees = DB::Select('Select * from 'employee''); 
+$sql = DB::last_query();
+</pre>
+<h3>select</h3>
+<ul class="list">
+<li><p><b>Purpose</b> &minus; Generate the select part of the query</p></li>
+<li><p><b>Parameter</b> &minus;</p>
+<ul class="list">
+<li><p><b>$columns</b> &minus; List of the database column names</p></li>
+</ul>
+</li>
+<li><p><b>Returns</b> &minus; Returns the Database_Query_Builder_Select object</p></li>
+</ul>
+<p>For example,</p>
+<pre class="prettyprint notranslate">
+$query = DB::select();              // Select *
+$query = DB::select('id', 'name'); // Select id, name 
+</pre>
+<h3>select_array (DB)</h3>
+<p>It is similar to select except we can send columns as array.</p>
+<pre class="prettyprint notranslate">
+$query = DB::select_array(array('id', 'name')); // Select id, name 
+</pre>
+<h3>insert</h3>
+<ul class="list">
+<li><p><b>Purpose</b> &minus; Generate the insert part of the query</p></li>
+<li><p><b>Parameter</b> &minus;</p>
+<ul class="list">
+<li><p><b>$table_name</b> &minus; name of the database table;</p></li>
+<li><p><b>$columns</b> &minus; array of table columns</p></li>
+</ul>
+</li>
+<li><p><b>Returns</b> &minus; Returns the Database_Query_Builder_Insert object</p></li>
+</ul>
+<p>For example,</p>
+<pre class="prettyprint notranslate">
+$query = DB::insert('employee');  // Insert into employee 
+$query = DB::insert('employee', array('id', 'name')); // Insert into employee (id, name)
+</pre>
+<h3>update</h3>
+<ul class="list">
+<li><p><b>Purpose</b> &minus; Generate the update part of the query</p></li>
+<li><p><b>Parameter</b> &minus;</p>
+<ul class="list">
+<li><p><b>$table_name</b> &minus; name of the database table</p></li>
+</ul>
+</li>
+<li><p><b>Returns</b> &minus; Returns the Database_Query_Builder_Update object</p></li>
+</ul>
+<p>For example,</p>
+<pre class="prettyprint notranslate">
+$query = DB::update('employee'); // update `employee`
+</pre>
+<h3>delete</h3>
+<ul class="list">
+<li><p><b>Purpose</b> &minus; Generate the delete part of the query</p></li>
+<li><p><b>Parameter</b> &minus;</p>
+<ul class="list">
+<li><p><b>$table_name</b> &minus; name of the database table</p></li>
+</ul>
+</li>
+<li><p><b>Returns</b> &minus; Returns the Database_Query_Builder_Delete object</p></li>
+</ul>
+<p>For Example</p>
+<pre class="prettyprint notranslate">
+$query = DB::delete('employee');  // delete from 'employee'
+</pre>
+<h2>Query API</h2>
+<p><b>Database_Query</b> provides an option to set database connection, execute the query, and fetch the result as associative array or object. Let us see the methods provided by Database_Query class.</p>
+<h3>set_connection</h3>
+<ul class="list">
+<li><p><b>Purpose</b> &minus; To set the database (database connection details) against which to execute the query</p></li>
+<li><p><b>Parameter</b> &minus; $db - database connection name</p></li>
+<li><p><b>Returns</b> &minus; Returns the <i>Database_Query</i> object</p></li>
+</ul>
+<p>For example,</p>
+<pre class="prettyprint notranslate">
+$query = DB::query('DELETE * FROM employee', DB::DELETE); 
+$query-&gt;set_connection('2nd-db');
+</pre>
+<h3>param</h3>
+<ul class="list">
+<li><p><b>Purpose</b> &minus; To set the value of the parameter defined in the Query object</p></li>
+<li><p><b>Parameter</b> &minus;</p>
+<ul class="list">
+<li><p><b>$param</b> &minus; parameter name;</p></li>
+<li><p><b>$value</b> &minus; value of the parameter</p></li>
+</ul>
+</li>
+<li><p><b>Returns</b> &minus; Returns the <i>Database_Query</i> object</p></li>
+</ul>
+<p>For example,</p>
+<pre class="prettyprint notranslate">
+// set some variables
+$table = 'employee';
+$id = 1;
+$name = 'Jon';
+
+// don't use
+$query = DB::query('SELECT * FROM '.$table.'. WHERE id = '.$id.' AND name = "'.$name.'"');
+
+// but use
+$query = DB::query('SELECT * FROM :tablename WHERE id = :id AND name = :name');
+$query-&gt;param('tablename', 'employee');
+$query-&gt;param('id', $id);
+$query-&gt;param('name', $name);
+</pre>
+<h3>Similar Methods</h3>
+<p><b>parameters</b> is a similar object except it provides option to give multiple value at once.</p>
+<pre class="prettyprint notranslate">
+$query-&gt;parameters (array( 
+   'tablename' =&gt; $table, 
+   'id' =&gt; $id, 
+   'name' =&gt; $name 
+}); 
+</pre>
+<h3>bind</h3>
+<ul class="list">
+<li><p><b>Purpose</b> &minus; To set a variable to the parameter defined in the Query object</p></li>
+<li><p><b>Parameter</b> &minus;</p>
+<ul class="list">
+<li><p><b>$param</b> &minus; parameter name</p></li>
+<li><p><b>$var</b> &minus; the variable to bind the parameter to</p></li>
+</ul>
+</li>
+<li><p><b>Returns</b> &minus; Returns the <i>Database_Query</i> object</p></li>
+</ul>
+<p>For example,</p>
+<pre class="prettyprint notranslate">
+// bind a query parameter 
+$table = 'employee'; 
+$query = DB::query('DELETE * FROM :tablename', DB::DELETE); 
+$query-&gt;bind('tablename', $table);  
+
+// update the variable 
+$table = 'employee_salary'; 
+
+// DELETE * FROM `employee_salary`; 
+$sql = $query-&gt;compile();
+</pre>
+<h3>compile</h3>
+<ul class="list">
+<li><p><b>Purpose</b> &minus; To compile the query object defined into SQL query</p></li>
+<li><p><b>Parameter</b> &minus;</p>
+<ul class="list">
+<li><p><b>$db</b> &minus; connection string, optional</p></li>
+</ul>
+</li>
+<li><p><b>Returns</b> &minus;</p></li>
+</ul>
+<p>For example,</p>
+<pre class="prettyprint notranslate">
+// assign a value to a query parameter 
+$table = 'employee'; 
+$query = DB::query('DELETE * FROM :tablename', DB::DELETE); 
+$query-&gt;param('tablename', $table);
+
+// compile the query, returns: DELETE * FROM employee 
+$sql = $query-&gt;compile(); 
+</pre>
+<h3>execute</h3>
+<ul class="list">
+<li><p><b>Purpose</b> &minus; To execute the query defined in the Query object and return the result</p></li>
+<li><p><b>Parameter</b> &minus;</p>
+<ul class="list">
+<li><p><b>$db</b> &minus; database connection name</p></li>
+</ul>
+</li>
+<li><p><b>Returns</b> &minus; Returns the result</p></li>
+</ul>
+<p>For example,</p>
+<pre class="prettyprint notranslate">
+// assign a value to a query parameter 
+$table = 'employee'; 
+$query = DB::query('DELETE * FROM :tablename', DB::DELETE); 
+$query-&gt;param('tablename', $table);  
+
+// execute the query 
+$query-&gt;execute();
+</pre>
+<h3>as_assoc</h3>
+<ul class="list">
+<li><p><b>Purpose</b> &minus; To set return type as associative array instead of objects</p></li>
+<li><p><b>Parameter</b> &minus; None</p></li>
+<li><p><b>Returns</b> &minus; Returns the current object</p></li>
+</ul>
+<p>For example,</p>
+<pre class="prettyprint notranslate">
+$query = DB::query('SELECT * FROM employee', DB::SELECT); 
+$result = $query-&gt;as_assoc()-&gt;execute(); 
+foreach ($result as $row) { 
+   echo $row['id']; 
+}
+</pre>
+<h3>as_object</h3>
+<ul class="list">
+<li><p><b>Purpose</b> &minus; To set return type as object instead of associative array</p></li>
+<li><p><b>Parameter</b> &minus; None</p></li>
+<li><p><b>Returns</b> &minus; Returns the current object</p></li>
+</ul>
+<p>For example,</p>
+<pre class="prettyprint notranslate">
+$query = DB::query('SELECT * FROM employee', DB::SELECT); 
+$result = $query-&gt;as_object()-&gt;execute(); 
+foreach ($result as $row) { 
+   echo $row-&gt;id; 
+}  
+
+// have ORM model objects return instead 
+$result = $query-&gt;as_object('Model_Employee')-&gt;execute();
+</pre>
+<h2>Query Builder API</h2>
+<p>Query builder <i>(Query_Builder)</i> based classes provide options to build SQL queries dynamically. It has four classes, each one to select <i>(Query_Builder_Select)</i>, insert <i>(Query_Builder_Insert)</i>, update <i>(Query_Builder_Update)</i> and delete <i>(Query_Builder_Delete)</i> queries. These classes are derived from <i>Query_Builder_Where</i> class (option to generate conditions), which itself is derived from <i>Query_Builder</i>, base of all classes.</p>
+<p>Let us look at the methods provided by Query_Builder class.</p>
+<h3>select</h3>
+<ul class="list">
+<li><p><b>Purpose</b> &minus; To generate the columns of select queries.</p></li>
+<li><p><b>Parameter</b> &minus;</p>
+<ul class="list">
+<li><p><b>$columns</b> &minus; list of columns, optional</p></li>
+</ul>
+</li>
+<li><p><b>Returns</b> &minus; Returns the current instance</p></li>
+</ul>
+<p>For example,</p>
+<pre class="prettyprint notranslate">
+$query = DB::select('name')  // select `name` 
+$query = DB::select(array('first_name', 'name')) // select `first_name` as `name`
+</pre>
+<h3>from</h3>
+<ul class="list">
+<li><p><b>Purpose</b> &minus; To generate the table details of select queries</p></li>
+<li><p><b>Parameter</b> &minus;</p>
+<ul class="list">
+<li><p><b>$tables</b> &minus; list of tables</p></li>
+</ul>
+</li>
+<li><p><b>Returns</b> &minus; Returns the current instance</p></li>
+</ul>
+<p>For example,</p>
+<pre class="prettyprint notranslate">
+$query = DB::select('name')-&gt;from('employee') // select `name` from `employee`
+</pre>
+<h3>where</h3>
+<ul class="list">
+<li><p><b>Purpose</b> &minus; To generate the conditions of select, insert and update queries</p></li>
+<li><p><b>Parameters</b> &minus;</p>
+<ul class="list">
+<li><p><b>$column</b> &minus; column name or array ($column, $alias);</p></li>
+<li><p><b>$op</b> &minus; logic operators, =, !=, IN, BETWEEN and LIKE, optional;</p></li>
+<li><p><b>$value</b> &minus; column value</p></li>
+</ul>
+</li>
+<li><p><b>Returns</b> &minus; Returns the current instance</p></li>
+</ul>
+<p>For example,</p>
+<pre class="prettyprint notranslate">
+$query = DB::select('name')-&gt;from('employee')  
+$query = $query-&gt;where('name', '=', 'Jon'); 
+// select `name` from `employee` where `name` = `Jon`;
+</pre>
+<h3>Similar Methods</h3>
+<p>The similar methods are where_open(), and_where_open(), or_where_open(), where_close(), and_where_close(), or_where_close(). They are similar to where() methods except that they add extra keywords and brackets around conditions. Following is a sample code.</p>
+<pre class="prettyprint notranslate">
+$query = DB::select('*')-&gt;from('employee');  
+$query-&gt;where('email', 'like', '%@gmail.com'); 
+$query-&gt;or_where_open(); 
+$query-&gt;where('name', 'Jon'); 
+$query-&gt;and_where('surname', 'Peter');
+$query-&gt;or_where_close();  
+// SELECT * FROM `employee` WHERE `email` LIKE "%gmail.com" OR 
+   (`name` = "Jon" AND `surname` = "Peter")
+</pre>
+<h3>join</h3>
+<ul class="list">
+<li><p><b>Purpose</b> &minus; To generate the table joins of select queries</p></li>
+<li><p><b>Parameters</b> &minus;</p>
+<ul class="list">
+<li><p><b>$table</b> &minus; table name or array($table, $alias);</p></li>
+<li><p><b>$type</b> &minus; join type (LEFT, RIGHT, INNER, etc.,)</p></li>
+</ul>
+</li>
+<li><p><b>Returns</b> &minus; Returns the current instance</p></li>
+</ul>
+<p>Example</p>
+<pre class="prettyprint notranslate">
+$query = DB::select('name')-&gt;from('employee')-&gt;join('employee_salary') 
+// select `name` from `employee` JOIN `employee_salary`
+</pre>
+<h3>on</h3>
+<ul class="list">
+<li><p><b>Purpose</b> &minus; To generate the condition of joins in select queries</p></li>
+<li><p><b>Parameters</b> &minus;</p>
+<ul class="list">
+<li><p><b>$c1</b> &minus; table name or table name with alias in array;</p></li>
+<li><p><b>$op</b> &minus; logical operator;</p></li>
+<li><p><b>$c2</b> &minus; table name or table name with alias in array</p></li>
+</ul>
+</li>
+<li><p><b>Returns</b> &minus; Returns the current instance</p></li>
+</ul>
+<p>For example,</p>
+<pre class="prettyprint notranslate">
+$query = DB::select('name')-&gt;from('employee')-&gt;join('employee_salary') 
+$query = $query-&gt;on('employee.employee_id', '=', 'employee_salary.employee_id') 
+// select `name` from `employee` JOIN `employee_salary` on 
+// `employee.employee_id` = `employee_salary.employee_id`
+</pre>
+<h3>Similar Methods</h3>
+<p>The related methods are and_on() and or_on(). They are similar to on() except that they add extra keyword and brackets around joins.</p>
+<h3>group_by</h3>
+<ul class="list">
+<li><p><b>Purpose</b> &minus; To generate group by queries</p></li>
+<li><p><b>Parameter</b> &minus; <b>$columns</b> &minus; Column name by which to group the result</p></li>
+<li><p><b>Returns</b> &minus; Returns the current instance</p></li>
+</ul>
+<p>For example,</p>
+<pre class="prettyprint notranslate">
+$query = DB::select('name')-&gt;from('employee')  
+$query = $query-&gt;group_by('name'); 
+// select `name` from `employee` group by `name`
+</pre>
+<h3>having</h3>
+<ul class="list">
+<li><p><b>Purpose</b> &minus; To generate the group by conditions of SQL queries</p></li>
+<li><p><b>Parameter</b> &minus; <b>$column</b> &minus; column name or array( $column, $alias ); <b>$op</b> &minus; logic operators, =, !=, IN, BETWEEN and LIKE, optional; <b>$value</b> &minus; column value</p></li>
+<li><p><b>Returns</b> &minus; Returns the current instance</p></li>
+</ul>
+<p>Example</p>
+<pre class="prettyprint notranslate">
+$query = DB::select('name')-&gt;from('employee')
+$query = $query-&gt;group_by('name');
+$query = $query-&gt;having('name', '!=', 'Jon');
+// select `name` from `employee` group by `name` having `name` != `Jon`
+</pre>
+<h3>Similar Methods</h3>
+<p>The similar methods are having_open(), and_having_open(), or_having_open(), having_close(), and_having_close(), or_having_close(). They are similar to having() methods except that they add extra keywords and brackets around conditions.</p>
+<h3>reset</h3>
+<ul class="list">
+<li><p><b>Purpose</b> &minus; To reset the query</p></li>
+<li><p><b>Parameter</b> &minus; None</p></li>
+<li><p><b>Returns</b> &minus; Returns the current instance</p></li>
+</ul>
+<p>For example,</p>
+<pre class="prettyprint notranslate">
+$query = DB::select('name')-&gt;from('employee')  
+$query-&gt;reset() 
+$query = DB::select('name')-&gt;from('employee_salary') 
+// select `name` from `employee_salary`
+</pre>
+<h3>DBUtil class</h3>
+<p>DBUtil class provides an option to manage and perform routine database operations. Some of the important methods are as follows &minus;</p>
+<ul class="list">
+<li>set_connection - Sets the default connection</li>
+</ul>
+<pre class="prettyprint notranslate">
+DBUtil::set_connection('new_database');
+</pre>
+<ul class="list">
+<li>create_database - Creates a database.</li>
+</ul>
+<pre class="prettyprint notranslate">
+DBUtil::create_database('my_database');
+</pre>
+<ul class="list">
+<li>drop_database - Drops a database.</li>
+</ul>
+<pre class="prettyprint notranslate">
+DBUtil::drop_database('my_database');
+</pre>
+<ul class="list">
+<li>table_exists - Checks if a given table exists.</li>
+</ul>
+<pre class="prettyprint notranslate">
+if(DBUtil::table_exists('my_table')) { 
+   // Table exists 
+} else { 
+   // Table does NOT exist, create it! 
+} 
+</pre>
+<ul class="list">
+<li>drop_table - Drops a table.</li>
+</ul>
+<pre class="prettyprint notranslate">
+DBUtil::drop_table('my_table');
+</pre>
+<ul class="list">
+<li>create_table - Creates a table.</li>
+</ul>
+<pre class="prettyprint notranslate">
+\DBUtil::create_table ( 
+   'users', 
+   array ( 
+      'id' =&gt; array('type' =&gt; 'int', 'auto_increment' =&gt; true), 
+      'name' =&gt; array('type' =&gt; 'text'), 
+   ), 
+); 
+</pre>
+<h2>Orm Toolkit</h2>
+<p>FuelPHP provides advanced database layer using ORM concept based on the popular <b>Active record pattern</b>. The toolkit is included in the application but not configured by default. It is bundled as a package and the package name is orm. We can add the following configuration in the main configuration file, <b>fuel/app/config/config.php</b> to load the orm toolkit.</p>
+<pre class="prettyprint notranslate">
+'always_load' =&gt; array ( 
+   'packages' =&gt; array (
+      'orm', 
+   ), 
+),
+</pre>
+<h3>Creating Models</h3>
+<p>Orm provides base model class Orm\Model. We need to extend our models with the orm model to use the ORM features. Following is a sample code.</p>
+<pre class="prettyprint notranslate">
+class Model_Employee extends Orm\Model {}
+</pre>
+<h3>Configuration</h3>
+<p>Orm provides a set of settings to configure the model to use the ORM features. They are as follows &minus;</p>
+<p><b>connection</b> &minus; Set a static <i>_connection</i> property in the model to specify the connection name.</p>
+<pre class="prettyprint notranslate">
+class Model_Employee extends Orm\Model { 
+   protected static $_connection = "production"; 
+}
+</pre>
+<p><b>table name</b> &minus; Set a static <i>_table_name</i> property in the model to specify the table name of the backend table.</p>
+<pre class="prettyprint notranslate">
+class Model_Employee extends Orm\Model { 
+   protected static $_table_name = 'employee'; 
+} 
+</pre>
+<p><b>primary key</b> &minus; Set a static <i>_primary_key</i> property in the model to specify the primary key of the backend table.</p>
+<pre class="prettyprint notranslate">
+class Model_Employee extends Orm\Model { 
+   protected static $_primary_key = array('id'); 
+} 
+</pre>
+<p><b>Columns</b> &minus; Set a static _properties property in the model to specify the columns of the backend table. It supports data_type, label, validation, form elememts, etc.</p>
+<pre class="prettyprint notranslate">
+class Model_Employee extends Orm\Model { 
+   protected static $_properties = array ( 
+      'id',  
+      'name' =&gt; array ( 
+         'data_type' =&gt; 'varchar', 
+         'label' =&gt; 'Employee Name', 
+         'validation' =&gt; array ( 
+            'required',  
+            'min_length' =&gt; array(3),  
+            'max_length' &gt; array(80) 
+         ), 
+         
+         'form' =&gt; array ( 
+            'type' =&gt; 'text' 
+         ), 
+      ),  
+
+      'age' =&gt; array ( 
+         'data_type' =&gt; 'int', 
+         'label' =&gt; 'Employee Age', 
+         'validation' =&gt; array ( 
+            'required',  
+         ),  
+         
+         'form' =&gt; array ( 
+            'type' =&gt; 'text' 
+         ), 
+      ),  
+   ); 
+}
+</pre>
+<p><b>Conditions</b> &minus; Set a static <i>_conditions</i> property to set the conditions and order by options.</p>
+<pre class="prettyprint notranslate">
+class Model_Employee extends Orm\Model { 
+   protected static $_conditions = array ( 
+      'order_by' =&gt; array('id' =&gt; 'desc'), 
+      'where' =&gt; array ( 
+         array('is_active', &gt; true), 
+      ), 
+   ); 
+}
+</pre>
+<p><b>Observers</b> &minus; <i>Orm</i> provides observer based event system to add behavior to specific events. To add a behavior, first set a <i>_observers</i> property in the model. Then, define the behavior as a class and set it in the <i>_observers</i> property along with events. If no event is specified, the behavior will be invoked for all events. We can specify multiple behavior as well.</p>
+<pre class="prettyprint notranslate">
+class Model_Employee { 
+   protected static $_observers = array ( 
+      'example',  // will call Observer_Example class for all events 
+      'Orm\\Observer_CreatedOn' =&gt; array ( 
+         'events' =&gt; array('before_insert'),  
+         // will only call Orm\Observer_CreatedOn at before_insert event 
+      ) 
+   ); 
+} 
+</pre>
+<h3>Create</h3>
+<p>Once we configure the model, we can start using the methods straightaway. <i>Orm</i> provides a <i>save</i> method to save the object into the database. We can set the data using configured properties as follows &minus;</p>
+<pre class="prettyprint notranslate">
+// option 1 
+$new = new Model_Employee(); 
+$new-&gt;name = 'Jon'; 
+$new-&gt;save();  
+
+// option 2, use forge instead of new 
+$new = Model_Employee::forge();
+$new-&gt;name = 'Jon'; 
+$new-&gt;save();  
+
+// option 3, use array for properties 
+$props = array('name' =&gt; 'Jon'); 
+$new = Model_Employee::forge($props); 
+$new&gt;save();
+</pre>
+<h3>Read</h3>
+<p>Orm provides a method, find to get fetch the data from the database and bind into the object. find method works depending on the input parameter. Let us look at the different options &minus;</p>
+<p><b>by primary key</b> &minus; Specifying the primary key returns the record by matching the primary key of the configured table.</p>
+<pre class="prettyprint notranslate">
+$employee = Model_Employee::find(1);
+</pre>
+<p><b>first / last record</b> &minus; Specifying ‘first’ or ‘last’ will fetch the first record or the last record respectively. We can pass the order by option as well.</p>
+<pre class="prettyprint notranslate">
+$entry = Model_Employee::find('first'); 
+$entry = Model_Article::find('last', array('order_by' =&gt; 'id'));
+</pre>
+<p><b>All</b> &minus; Specifying ‘all’ will fetch all the records from the configured table. We can specify order by option as well as conditions.</p>
+<pre class="prettyprint notranslate">
+$entry = Model_Employee::find('all');  
+$entry = Model_Article::find ('all', array ( 
+   'where' =&gt; array ( 
+      array ('name', 'Jon'), 
+   ), 
+   'order_by' =&gt; array ('id' =&gt; 'desc'), 
+));
+</pre>
+<p>We can use Query API of basic database toolkit along with model for advanced search option as follows.</p>
+<pre class="prettyprint notranslate">
+$query = Model_Employee::query()-&gt;where('category_id', 1)-&gt;order_by('date', 'desc');
+$number_of_employees = $query-&gt;count(); 
+$latest_employee = $query-&gt;max('id'); 
+$young_employee = $query-&gt;min('age'); 
+$newest_employee = $query-&gt;get_one(); 
+$employees = $query-&gt;limit(15)-&gt;get();
+</pre>
+<h3>Update</h3>
+<p>Updating the model is the same as creating, except instead of creating a new model just fetch the model to be updated using the find method, update the property and then call the save method as follows.</p>
+<pre class="prettyprint notranslate">
+$entry = Model_Employee:find(4);
+$entry-&gt;name = 'Peter'; 
+$entry-&gt;save();
+</pre>
+<h3>Delete</h3>
+<p>Orm provides a delete method to delete the model. Just fetch the object and call the delete method.</p>
+<pre class="prettyprint notranslate">
+$entry = Model_Employee:find(4); 
+$entry-&gt;delete();
+</pre>
+<h2>Working Example</h2>
+<p>Let's create a working example in this chapter to understand the model and database.</p>
+<h3>Create a Database</h3>
+<p>Create a new database in MySQL server, using the following command.</p>
+<pre class="prettyprint notranslate">
+create database tutorialspoint_fueldb
+</pre>
+<p>Then, create a table inside the database using the following command.</p>
+<pre class="prettyprint notranslate">
+create table employee(id int primary key, name varchar(20), age int not null);
+</pre>
+<h3>Configure the Database</h3>
+<p>Let us configure the database using database configuration file, *fuel/app/config/db.php. Add the following changes to connect MySQL server.</p>
+<pre class="prettyprint notranslate">
+&lt;?php  
+   return array ( 
+      'development' =&gt; array ( 
+         'type'           =&gt; 'mysqli', 
+         'connection'     =&gt; array ( 
+            'hostname'       =&gt; 'localhost', 
+            'port'           =&gt; '3306', 
+            'database'       =&gt; 'tutorialspoint_fueldb', 
+            'username'       =&gt; 'root', 
+            'password'       =&gt; 'pass', 
+            'persistent'     =&gt; false, 
+            'compress'       =&gt; false, 
+         ), 
+         
+         'identifier'     =&gt; '`', 
+         'table_prefix'   =&gt; '', 
+         'charset'        =&gt; 'utf8', 
+         'enable_cache'   =&gt; true, 
+         'profiling'      =&gt; false, 
+         'readonly'       =&gt; false, 
+      ),  
+      
+      'production' =&gt; array ( 
+         'type'           =&gt; 'mysqli', 
+         'connection'     =&gt; array ( 
+            'hostname'       =&gt; 'localhost', 
+            'port'           =&gt; '3306', 
+            'database'       =&gt; 'tutorialspoint_fueldb', 
+            'username'       =&gt; 'root', 
+            'password'       =&gt; 'pass', 
+            'persistent'     =&gt; false, 
+            'compress'       =&gt; false, 
+         ), 
+         
+         'identifier'     =&gt; '`', 
+         'table_prefix'   =&gt; '', 
+         'charset'        =&gt; 'utf8', 
+         'enable_cache'   =&gt; true, 
+         'profiling'      =&gt; false, 
+         'readonly'       =&gt; false, 
+      ), 
+   );
+</pre>
+<h3>Include ORM Package</h3>
+<p>Update the main configuration file, <b>fuel/app/config/config.php</b> to include ORM package by adding the following configuration.</p>
+<pre class="prettyprint notranslate">
+'always_load' =&gt; array ( 
+   'packages' =&gt; array ( 
+      'orm' 
+   ), 
+),
+</pre>
+<p>Now, ORM is enabled in your application</p>
+<h3>Create Employee Model</h3>
+<p>Create a new model, Employee under the model folder <b>“fuel/app/classes/model”</b>. It is defined as follows.</p>
+<p><b>Employee.php</b></p>
+<pre class="prettyprint notranslate">
+&lt;?php  
+   class Model_Employee extends Orm\Model { 
+      protected static $_connection = 'production'; 
+      protected static $_table_name = 'employee'; 
+      protected static $_primary_key = array('id'); 
+      protected static $_properties = array ( 
+         'id',  
+         'name' =&gt; array ( 
+            'data_type' =&gt; 'varchar', 
+            'label' =&gt; 'Employee Name', 
+            'form' =&gt; array (
+               'type' =&gt; 'text' 
+            ), 
+         ),  
+         
+         'age' =&gt; array ( 
+            'data_type' =&gt; 'int', 
+            'label' =&gt; 'Employee Age', 
+            'form' =&gt; array ( 
+               'type' =&gt; 'text' 
+            ), 
+         ),  
+      ); 
+   } 
+</pre>
+<h3>Create Action</h3>
+<p>Create new action, <b>action_model</b> in Employee controller located at <b>fuel/app/classes/controller/employee.php</b> as follows.</p>
+<pre class="prettyprint notranslate">
+class Controller_Employee extends Controller { 
+   public function action_model() { 
+      
+      // db based sql command to delete all employees 
+      $query = db::query('delete from `employee`'); 
+      $query-&gt;execute('production');  
+      
+      // orm based query to add new employees 
+      $model = new model_employee(); 
+      $model-&gt;name = "john"; 
+      $model-&gt;age = 25; 
+      $model-&gt;save();  
+      $model = new model_employee(); 
+      $model-&gt;name = "peter"; 
+      $model-&gt;age = 20; 
+      $model-&gt;save(); 
+      
+      // orm based query to fetch all employee data 
+      $data = array(); 
+      $data['emps'] = model_employee::find('all');  
+      return response::forge(view::forge('employee/model', $data)); 
+   } 
+} 
+</pre>
+<h3>Create View</h3>
+<p>Now, create a view file <b>model.php</b> located at <b>“fuel/app/views/employee”</b>. Add the following changes in the file.</p>
+<pre class="prettyprint notranslate">
+&lt;ul&gt; 
+   &lt;?php 
+      foreach($emps as $emp) {  
+   ?&gt; 
+   &lt;li&gt;&lt;?php echo $emp['name']; ?&gt;&lt;/li&gt; 
+   
+   &lt;?php 
+   } 
+   ?&gt; 
+&lt;/ul&gt; 
+</pre>
+<p>Now, request the URL, <b>http://localhost:8080/employee/model</b> and it will produce the following result.</p>
+<h3>Result</h3>
+<img src="images/create_view.jpg" alt="Create View" />
+<div class="d-flex justify-content-between border-bottom border-top py-2" id="bottom_navigation">
+<a href="index-2.html" class="pre-btn"><i class="fal fa-chevron-circle-left"></i> Previous Page</a>
+<a id="print-page" href="#" class="pre-btn d-none d-sm-block"><i class="fal fa-print"></i> Print Page</a>
+<a href="fuelphp_installation.html" class="nxt-btn">Next Page <i class="fal fa-chevron-circle-right"></i>&nbsp;</a>
+</div>
+<style>
+@media (max-width: 1199.98px){ .navbar-expand-xl .navbar-brand .navbar-brand-item{height:35px!important; width:auto;} }
+@media (min-width: 1200px){
+.navbar-expand-xl .navbar-brand .navbar-brand-item{width:275px!important; height:42px!important; display:block;} }
+</style>
+			<div class="google-bottom-ads" id="google-bottom-ads">
+				<div>Advertisements</div>
+				<div>
+					<div id="adp_bottom_ads"></div>
+					<script>
+						var adPos = document.getElementById('adp_bottom_ads');
+						var mobile_ad_id = "6d621d7e-9531-4f26-810f-68af67dc6366";
+						var desktop_ad_id = "4951d1d6-24d4-4a31-afb7-2c22c489eae1";
+						var adpushup = adpushup || {};
+						adpushup.que = adpushup.que || [];
+						adpushup.que.push(function() {
+							var ad_id = window.innerWidth <= 768 ? mobile_ad_id : desktop_ad_id;
+							adPos.innerHTML = '<div id="' + ad_id + '" class="_ap_apex_ad"></div>';
+							adpushup.triggerAd(ad_id);
+						});
+					</script>
+				</div>
+			</div>
+		</div>
+	<!-- Tutorial Content Ends Here -->
+
+	<!-- Right Column Starts Here -->
+	<div class="col-sm-6 col-md-3 col-xl-3">
+				<div class="data-sticky" id="google-right-ads">
+			<div class="google-right-ad" style="margin: 0px auto !important;margin-top:5px;min-height:280px!important">
+				<div id="2557b9b8-4c1f-4586-a953-f123dbd2ed8e" class="_ap_apex_ad">
+					<script>
+						if( window.innerWidth > 768 ){
+						   var adpushup = adpushup || {};
+						   adpushup.que = adpushup.que || [];
+						   adpushup.que.push(function() {
+						   adpushup.triggerAd("2557b9b8-4c1f-4586-a953-f123dbd2ed8e");
+						   });
+						}
+					</script>
+				</div>
+			</div>
+			<div class="google-right-ad" style="margin-top:16px;min-height:280px!important">
+				<div id="b078e6a3-e1b7-40fe-b690-11ac441ad2d5" class="_ap_apex_ad">
+					<script>
+						if( window.innerWidth > 768 ){
+						   var adpushup = adpushup || {};
+						   adpushup.que = adpushup.que || [];
+						   adpushup.que.push(function() {
+						   adpushup.triggerAd("b078e6a3-e1b7-40fe-b690-11ac441ad2d5");
+						   });
+						}
+					</script>
+				</div>
+			</div>
+			<div class="google-right-ad" style="margin-top:16px;margin-bottom:15px;min-height:600px!important">
+				<div id="8f8814c2-d64c-4d26-9cb9-543653c0b48f" class="_ap_apex_ad">
+					<script>
+						if( window.innerWidth > 768 ){
+						   var adpushup = adpushup || {};
+						   adpushup.que = adpushup.que || [];
+						   adpushup.que.push(function() {
+						   adpushup.triggerAd("8f8814c2-d64c-4d26-9cb9-543653c0b48f");
+						   });
+						}
+					</script>
+				</div>
+			</div>
+			<!-- Right Column Ends Here -->
+		</div>
+	</div>
+</div>
+</div>
+</main>
+
+
+
+<footer class="py-3 card navbar-dark border-top" id="footer">
+	<!-- ======================= Annual Membership -->
+	<div class="py-4 bg-white">
+		<div class="container">
+			<div class="row g-4">
+			<!-- Action box item -->
+				<div class="col-lg-6 position-relative overflow-hidden">
+					<a href="https://www.tutorialspoint.com/market/business/subscription.jsp" target="_blank" title="Annual Membership">
+						<div class="bg-primary bg-opacity-10 rounded-3 p-5 h-100">
+							<div class="position-absolute bottom-0 end-0 me-3">
+								<img src="https://www.tutorialspoint.com/images/annual-membership-wraps.svg" class="h-100px h-sm-200px" alt="Annual Membership" style="border-bottom-right-radius:10px;">
+							</div>
+							<div class="row">
+								<div class="col-sm-8 position-relative">
+									<h3 class="mb-1">Annual Membership</h3>
+									<p class="mb-3 h5 fw-light lead">Enjoy unlimited access on 5500+ Hand Picked Quality Video Courses</p>
+									<div class="btn btn-business mb-0"><i class="fal fa-check"></i> Subscribe Now</div>
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<!-- Action box item -->
+				<div class="col-lg-6 position-relative overflow-hidden">
+					<a href="https://www.tutorialspoint.com/business/index.asp#demoRequest" target="_blank" title="Business Pack">
+						<div class="bg-secondary rounded-3 bg-opacity-10 p-5 h-100">
+							<div class="position-absolute bottom-0 end-0 me-3">
+								<img src="https://www.tutorialspoint.com/images/business-banner-wraps.svg" class="h-100px h-sm-200px" alt="Training for a Team">
+							</div>
+							<div class="row">
+								<div class="col-sm-8 position-relative">
+									<h3 class="mb-1">Training for a Team</h3>
+									<p class="mb-3 h5 fw-light lead">Affordable solution to train a team and make them project ready.</p>
+									<div class="btn btn-warning mb-0"><i class="fal fa-check me-1"></i> Request a Demo</div>
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- ======================= Annual Membership -->
+	<div class="container">
+		<div class="row g-4">
+			<div class="col-lg-12 text-center">
+				<a class="me-0 pb-4" href="https://www.tutorialspoint.com/index.htm">
+					<img class="light-mode-item" src="https://www.tutorialspoint.com/static/images/logo.png?v=9.01" alt="Tutorials Point" style="height:42px;">
+					<img class="dark-mode-item" src="https://www.tutorialspoint.com/static/images/logo-w.png?v=9.10" alt="Tutorials Point" style="height:42px;">
+				</a>
+				<ul class="nav justify-content-center py-3 mt-md-0 ">
+					<li class="nav-item"><a class="nav-link fw-bold" href="https://www.tutorialspoint.com/about/index.htm"><i class="fal fa-globe"></i> About us</a></li>
+					<li class="nav-item"><a class="nav-link fw-bold" href="https://www.tutorialspoint.com/about/return_refund_policy.htm"> <i class="fal fa-check"></i> Refund Policy</a></li>
+					<li class="nav-item"><a class="nav-link fw-bold" href="https://www.tutorialspoint.com/about/about_terms_of_use.htm"><i class="fal fa-check"></i> Terms of use</a></li>
+					<li class="nav-item"><a class="nav-link fw-bold" href="https://www.tutorialspoint.com/about/about_privacy.htm"> <i class="fal fa-shield-check"></i> Privacy Policy</a></li>
+					<li class="nav-item"><a class="nav-link fw-bold" href="https://www.tutorialspoint.com/about/faq.htm"><i class="fal fa-question-circle"></i> FAQ's</a></li>
+					<li class="nav-item"><a class="nav-link fw-bold" href="https://www.tutorialspoint.com/about/contact_us.htm"><i class="fal fa-map-marker-alt"></i> Contact</a></li>
+				</ul>
+				<p class="small">Copyright © TUTORIALS POINT (INDIA) PRIVATE LIMITED. All Rights Reserved.</p>
+			</div>
+			<div id="privacy-banner">
+				<div>
+					<p>We make use of First and third party cookies to improve our user experience. By using this website, you agree with our Cookies Policy.
+						<a id="banner-accept" href="#">Agree</a>
+						<a id="banner-learn" href="https://www.tutorialspoint.com/about/about_cookies.htm" target="_blank">Learn more</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+
+<div class="back-top">
+<i class="fal fa-angle-up position-absolute top-50 start-50 translate-middle"></i>
+</div>
+<script async src="https://www.tutorialspoint.com/static/js/script-min.js?v=0.40"></script>
+<script type="text/javascript">
+    var AddShoppersWidgetOptions = { 'loadCss': false, 'pushResponse': false };
+    (!function(){
+        var t=document.createElement("script");
+        t.type="text/javascript",
+        t.async=!0,
+        t.id="AddShoppers",
+        t.src="https://shop.pe/widget/widget_async.js#6434190bc032b7050cd12cdc",
+        document.getElementsByTagName("head")[0].appendChild(t)
+    }());
+</script>
+<script>
+  (function(w,d,t,r,u)
+  {
+    var f,n,i;
+    w[u]=w[u]||[],f=function()
+    {
+      var o={ti:"97039426", enableAutoSpaTracking: true};
+      o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")
+    },
+    n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function()
+    {
+      var s=this.readyState;
+      s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)
+    },
+    i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)
+  })
+  (window,document,"script","http://bat.bing.com/bat.js","uetq");
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX9ZP4VY84"></script>
+<script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+     gtag('config', 'G-EX9ZP4VY84');
+</script>
+</body>
+
+<!-- Mirrored from www.tutorialspoint.com/fuelphp/fuelphp_models_and_database.htm by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 10 Jun 2023 17:43:51 GMT -->
+</html>
