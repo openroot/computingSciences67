@@ -10,7 +10,7 @@ xdebug.start_with_request=yes
 xdebug.discover_client_host=1
 xdebug.log_level=0
 6. command: apt install composer [optional]
-7. command: php -S localhost:8081 -t /home/<user>/<projectName>; (create the project before if it do not exists)
+7. command: php -S localhost:8081 -t "/home/<user>/<projectName>"; (create the project before if it do not exists)
 8. By now, php (without mysql) up & running with xdebug. (use 'visual studio code' as IDE)
 Consecutive command activates specification up http://localhost:8081 (for validate)
 
